@@ -6,7 +6,9 @@
       "when": "2026-07-19T18:00",
       "text_file": "posts/scheduler-test.txt",
       "label": "scheduler test — delete after confirming",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-07-19T18:57:53+01:00",
+      "post_id": "urn:li:share:7484667850058801152"
     }
   ]
 }
