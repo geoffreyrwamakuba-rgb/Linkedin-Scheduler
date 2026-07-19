@@ -1,0 +1,31 @@
+Your dashboard says the API averages 120ms.
+
+Your biggest customer just waited 4 seconds.
+
+Both are true.
+
+That's the problem with averages: they describe a system nobody actually experiences.
+
+Percentiles describe what real requests feel:
+
+p50 — the median. Half of requests are faster, half slower. Your "typical" experience.
+
+p95 — 1 request in 20 is slower than this.
+
+p99 — 1 in 100. Sounds rare.
+
+It isn't. Here's the maths nobody runs:
+
+If one page load fires 100 API calls, the chance of hitting your p99 at least once is about 63%.
+
+Your "1% worst case" is most sessions' normal.
+
+And the slow tail isn't random, either.
+
+The heaviest requests usually come from your biggest customers — the accounts with the most data are the ones living at p99.
+
+So the average reports the experience of nobody.
+
+p99 reports the experience of the customers you least want to lose.
+
+Never cross a river because it's "on average" a metre deep.

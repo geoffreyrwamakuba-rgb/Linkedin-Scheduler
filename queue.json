@@ -8,6 +8,13 @@
       "image": "images/dab-production-flags.png",
       "label": "Declarative Automation Bundles — production flags",
       "status": "pending"
+    },
+    {
+      "when": "2026-07-30T11:00",
+      "text_file": "posts/p50-p95-p99.txt",
+      "image": "images/p50-p95-p99.png",
+      "label": "p50/p95/p99 — averages lie",
+      "status": "pending"
     }
   ]
 }
