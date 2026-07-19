@@ -1,0 +1,35 @@
+Tutorials teach you six bundle commands.
+
+Production runs on the flags they skip.
+
+The basic bundle commands are easy: init, validate, deploy, run.
+
+(Asset Bundles are now called Declarative Automation Bundles, by the way. Same CLI.)
+
+But production doesn't run on the basics. It runs on the flags the tutorials skip:
+
+Your CI/CD pipeline hangs on deploy, waiting for a confirmation nobody is there to give
+→ databricks bundle deploy --target prod --auto-approve
+
+A deploy crashed and left a stale lock, so now every deploy fails
+→ databricks bundle deploy --force-lock
+
+You're about to deploy over jobs that are mid-run
+→ databricks bundle deploy --fail-on-active-runs
+
+You want to see what a deploy would change before it changes anything
+→ databricks bundle plan
+
+Someone built a job in the UI, and you need it under version control
+→ databricks bundle generate job --existing-job-id 6565621249 --bind
+
+A pipeline needs a full rebuild, not an incremental update
+→ databricks bundle run my_pipeline --full-refresh-all
+
+None of these show up in a quickstart.
+
+All of them show up in your first month running bundles in production.
+
+The basics get you deployed.
+
+The flags keep you deployed.

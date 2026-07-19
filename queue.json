@@ -1,5 +1,13 @@
 {
   "_readme": "Scheduled LinkedIn posts, single source of truth. Times are Europe/London, ISO format. Status: pending -> posted | missed | failed. NEVER queue a post that is also scheduled in LinkedIn's native scheduler (double-post). token_expires drives the expiry warning in Actions logs.",
   "token_expires": "2026-09-16",
-  "queue": []
+  "queue": [
+    {
+      "when": "2026-07-28T11:00",
+      "text_file": "posts/dab-production-flags.txt",
+      "image": "images/dab-production-flags.png",
+      "label": "Declarative Automation Bundles — production flags",
+      "status": "pending"
+    }
+  ]
 }
