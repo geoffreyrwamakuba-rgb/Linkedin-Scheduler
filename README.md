@@ -21,6 +21,8 @@ best-effort). Anything more than 48h late is marked `missed`, never posted stale
 
 ## Rules
 
-- **Keep this repo PRIVATE** — it holds unpublished post content.
+- Repo is deliberately **public** (Geoff's call 2026-07-19): drafts are LinkedIn-bound
+  anyway, the token lives only in GitHub Secrets, and public repos get unlimited free
+  Actions minutes. Don't put anything here that isn't destined for LinkedIn.
 - Never queue a post that's also scheduled in LinkedIn's native scheduler.
 - Managed by the Exec Assistant workflow: `workflows/linkedin_post.md`.
