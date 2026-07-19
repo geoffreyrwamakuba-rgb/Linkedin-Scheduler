@@ -1,0 +1,41 @@
+name: LinkedIn Post Dispatcher
+
+on:
+  schedule:
+    - cron: "0,30 * * * *"   # every 30 min (UTC); dispatcher converts to Europe/London
+  workflow_dispatch: {}       # manual trigger for testing
+
+concurrency:
+  group: linkedin-dispatch    # never two runs at once (double-post guard)
+  cancel-in-progress: false
+
+permissions:
+  contents: write             # to commit queue.json status updates
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Run dispatcher
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_MEMBER_URN: ${{ secrets.LINKEDIN_MEMBER_URN }}
+        run: python dispatcher.py
+
+      - name: Commit status updates
+        run: |
+          if ! git diff --quiet queue.json; then
+            git config user.name "dispatcher-bot"
+            git config user.email "actions@github.com"
+            git add queue.json
+            git commit -m "dispatcher: update post statuses"
+            git push
+          fi
