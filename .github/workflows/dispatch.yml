@@ -2,7 +2,7 @@ name: LinkedIn Post Dispatcher
 
 on:
   schedule:
-    - cron: "0,30 * * * *"   # every 30 min (UTC); dispatcher converts to Europe/London
+    - cron: "0,30 6-20 * * *"   # every 30 min, 06:00-20:30 UTC only (~7:00-21:30 London) — keeps private-repo Actions usage ~900 free min/month vs the 2000 cap; posts are daytime anyway
   workflow_dispatch: {}       # manual trigger for testing
 
 concurrency:
