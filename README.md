@@ -7,11 +7,14 @@ Share on LinkedIn API. Runs on GitHub Actions every 30 minutes — no laptop nee
 
 1. Post text goes in `posts/<slug>.txt` (clean plain text, no markdown), image in `images/`.
 2. An entry is added to `queue.json` with the publish time (Europe/London) and `status: "pending"`.
-3. The Actions workflow (`.github/workflows/dispatch.yml`) runs every 30 min,
-   publishes anything due, and commits the status update back.
+3. The Actions workflow (`.github/workflows/dispatch.yml`) runs hourly on the hour
+   (daytime, London), publishes anything due, and commits the status update back.
 
-Expect up to ~30-45 min of drift past the scheduled time (Actions cron is
-best-effort). Anything more than 48h late is marked `missed`, never posted stale.
+Schedule posts **on the hour** (e.g. 11:00) — they'll land within ~10 minutes.
+Only `pending` items ever fire; `posted`/`failed`/`missed` never re-fire, and an
+empty queue run is a no-op. Anything more than 48h late is marked `missed`,
+never posted stale. End-to-end verified 2026-07-19 (queued → Actions → live post
+→ status committed back).
 
 ## Secrets (Settings → Secrets and variables → Actions)
 
