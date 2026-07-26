@@ -1,0 +1,20 @@
+You've seen the One Big Table vs star schema debate. Here's the one-page version nobody's actually written.
+
+Two camps, same warehouse.
+
+One Big Table: every column, pre-joined, one place to query. No joins at read time.
+
+Star schema (Kimball): a fact table at a declared grain, joined to dimension tables that every team agrees on.
+
+The debate usually gets argued as ideology. It isn't. It's two inputs:
+
+→ How many tools/teams query this data?
+One dashboard, one owner — OBT wins. Five teams who all need "revenue" to mean the same thing — you need conformed dimensions, or you get five different revenue numbers by Friday.
+
+→ Does a wrong join silently change the answer?
+If duplicating a row just adds a redundant column, OBT is fine. If duplicating a row double-counts a metric (revenue, occupancy, anything you SUM), you need a declared grain — that's the whole point of a fact table.
+
+→ How fast is the shape still changing?
+Requirements still moving, small team, cheap to rebuild — OBT gets you there faster. Stable, multi-consumer, been asked "why don't these two dashboards match" more than once — that's the star schema's actual job.
+
+The honest 2026 answer isn't "pick one." It's OBT as a serving layer, sitting on top of a properly modeled star schema underneath — cheap flat access for the one dashboard, governed truth for everyone else.

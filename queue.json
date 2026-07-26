@@ -15,6 +15,13 @@
       "image": "images/p50-p95-p99.png",
       "label": "p50/p95/p99 — averages lie",
       "status": "pending"
+    },
+    {
+      "when": "2026-08-03T10:00",
+      "text_file": "posts/obt-vs-star-schema.txt",
+      "image": "images/obt-vs-star-schema.png",
+      "label": "One Big Table vs Star Schema — the debate itself",
+      "status": "pending"
     }
   ]
 }
