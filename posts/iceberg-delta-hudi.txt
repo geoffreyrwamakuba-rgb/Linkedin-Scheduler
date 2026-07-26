@@ -1,0 +1,18 @@
+Iceberg is winning not because it's technically the best. It's winning because it's the one you're not locked into.
+
+All three solve the same base problem: raw files sitting in S3 have no transactions, no schema enforcement, no time travel. Delta Lake, Apache Hudi, and Apache Iceberg each bolt a transaction log on top so a data lake starts behaving like a real table.
+
+→ Delta Lake
+Built by Databricks. Deepest integration if you're all-in on Databricks/Spark. Historically weaker the moment you leave that ecosystem.
+
+→ Apache Hudi
+Built at Uber. Strongest for streaming and CDC — efficient row-level upserts. Smaller community, mostly picked for that one specific case.
+
+→ Apache Iceberg
+Vendor-neutral, built at Netflix. Its REST Catalog lets you write with one engine and read with another — Spark writes it, Snowflake reads it, nothing gets copied.
+
+That last point is why Iceberg has the momentum right now. Not because it's technically the best of the three. Because it's built to not lock you in.
+
+Snowflake, AWS, and Databricks have all added Iceberg support in the last year — including Databricks, whose own format is Delta. Nobody wants to be the platform a data team can't leave.
+
+If you're working on a project today, that choice isn't a performance decision. It's a "who else might need to read this table, and what am I willing to get locked into" decision.

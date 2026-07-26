@@ -11,16 +11,23 @@
     },
     {
       "when": "2026-07-30T10:00",
+      "text_file": "posts/obt-vs-star-schema.txt",
+      "image": "images/obt-vs-star-schema.png",
+      "label": "One Big Table vs Star Schema — the debate itself",
+      "status": "pending"
+    },
+    {
+      "when": "2026-08-03T10:00",
       "text_file": "posts/p50-p95-p99.txt",
       "image": "images/p50-p95-p99.png",
       "label": "p50/p95/p99 — averages lie",
       "status": "pending"
     },
     {
-      "when": "2026-08-03T10:00",
-      "text_file": "posts/obt-vs-star-schema.txt",
-      "image": "images/obt-vs-star-schema.png",
-      "label": "One Big Table vs Star Schema — the debate itself",
+      "when": "2026-08-05T10:00",
+      "text_file": "posts/iceberg-delta-hudi.txt",
+      "image": "images/iceberg-delta-hudi.png",
+      "label": "Iceberg vs Delta Lake vs Hudi",
       "status": "pending"
     }
   ]
