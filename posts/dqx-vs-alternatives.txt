@@ -1,6 +1,6 @@
 Data quality tools all promise the same thing: catch bad data before it costs you.
 
-The real gap shows up in what happens when a check actually fails — and where in your pipeline it happens at all.
+Here's where they actually differ: what happens when a check fails, and where in your pipeline it happens at all.
 
 → Great Expectations
 Platform-agnostic — works across Spark, Pandas, SQL. Rich library of pre-built checks, auto-generated documentation. No quarantine option, though — a failed check tells you rows are bad, it doesn't stop them landing.
