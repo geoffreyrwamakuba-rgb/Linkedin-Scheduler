@@ -3,17 +3,17 @@
   "token_expires": "2026-09-16",
   "queue": [
     {
-      "when": "2026-07-28T10:00",
-      "text_file": "posts/dab-production-flags.txt",
-      "image": "images/dab-production-flags.png",
-      "label": "Declarative Automation Bundles — production flags",
-      "status": "pending"
-    },
-    {
-      "when": "2026-07-30T10:00",
+      "when": "2026-07-27T10:00",
       "text_file": "posts/obt-vs-star-schema.txt",
       "image": "images/obt-vs-star-schema.png",
       "label": "One Big Table vs Star Schema — the debate itself",
+      "status": "pending"
+    },
+    {
+      "when": "2026-07-29T10:00",
+      "text_file": "posts/dab-production-flags.txt",
+      "image": "images/dab-production-flags.png",
+      "label": "Declarative Automation Bundles — production flags",
       "status": "pending"
     },
     {
