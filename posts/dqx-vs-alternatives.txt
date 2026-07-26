@@ -1,0 +1,17 @@
+Data quality tools all promise the same thing: catch bad data before it costs you.
+
+The real gap shows up in what happens when a check actually fails — and where in your pipeline it happens at all.
+
+→ Great Expectations
+Platform-agnostic — works across Spark, Pandas, SQL. Rich library of pre-built checks, auto-generated documentation. No quarantine option, though — a failed check tells you rows are bad, it doesn't stop them landing.
+
+→ Deequ (PyDeequ in Python)
+AWS-born, Spark-native, older and battle-tested at scale. Strong automated anomaly detection out of the box. No quarantine option either, and its Spark integration has a reputation for breaking on Databricks Runtime upgrades.
+
+→ DQX (Databricks Labs)
+Row- and column-level rules on PySpark DataFrames, checked before the write happens, not just after. Can quarantine failing rows into a separate table instead of failing the whole pipeline. And it's one of the only tools here that tells you exactly why a specific row failed, not just how many did.
+
+→ dbt tests
+SQL-layer, not Spark — runs against your models, in the warehouse, after a transform. No pre-write checking, but store_failures gets you the same quarantine-and-inspect workflow the Spark-native tools offer, just after the fact instead of before it.
+
+Most data quality tools tell you how many rows failed. Only a couple of them tell you why.

@@ -29,6 +29,13 @@
       "image": "images/iceberg-delta-hudi.png",
       "label": "Iceberg vs Delta Lake vs Hudi",
       "status": "pending"
+    },
+    {
+      "when": "2026-08-10T10:00",
+      "text_file": "posts/dqx-vs-alternatives.txt",
+      "image": "images/dqx-vs-alternatives.png",
+      "label": "Intro to DQX — what it is vs alternatives",
+      "status": "pending"
     }
   ]
 }
