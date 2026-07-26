@@ -3,14 +3,14 @@
   "token_expires": "2026-09-16",
   "queue": [
     {
-      "when": "2026-07-28T11:00",
+      "when": "2026-07-28T10:00",
       "text_file": "posts/dab-production-flags.txt",
       "image": "images/dab-production-flags.png",
       "label": "Declarative Automation Bundles — production flags",
       "status": "pending"
     },
     {
-      "when": "2026-07-30T11:00",
+      "when": "2026-07-30T10:00",
       "text_file": "posts/p50-p95-p99.txt",
       "image": "images/p50-p95-p99.png",
       "label": "p50/p95/p99 — averages lie",
