@@ -1,0 +1,27 @@
+Cron expressions look like a secret code: 0 */4 * * *.
+
+They're not. They're five questions, always in the same order.
+
+→ Minute — 0 to 59
+→ Hour — 0 to 23
+→ Day of month — 1 to 31
+→ Month — 1 to 12
+→ Day of week — 0 to 6 (Sunday to Saturday)
+
+"*" just means "every."
+
+So 0 */4 * * * reads as: minute 0, every 4th hour, every day of the month, every month, every day of the week.
+
+Translation: runs at 00:00, 04:00, 08:00, 12:00, 16:00, 20:00 — every 4 hours, on the hour.
+
+Same rules, a busier expression: 0 10 1,15 * *.
+
+Minute 0, hour 10, the 1st and 15th of the month, every month, every day of the week.
+
+Translation: 10am, twice a month, on the 1st and the 15th.
+
+One trap worth knowing: say you want that same "twice a month" schedule, but only if it lands on a Monday. You'd think adding a day-of-week restriction narrows it down. It doesn't. When both day-of-month and day-of-week are restricted, cron treats them as OR, not AND — a POSIX rule, not a quirk of one tool. 0 10 1,15 * 1 doesn't mean "the 1st or 15th, if it's a Monday." It means "the 1st, the 15th, OR any Monday." That one rule catches almost everyone at least once.
+
+Anything more complicated than that — like "only the 1st and 3rd Monday" — isn't worth fighting cron syntax for. Add a check inside the script itself and let it no-op on the wrong day.
+
+Once you know the order — and that one exception — you're not decoding a cron expression anymore. You're just reading a sentence.
