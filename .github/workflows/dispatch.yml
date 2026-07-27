@@ -2,7 +2,14 @@ name: LinkedIn Post Dispatcher
 
 on:
   schedule:
-    - cron: "0 7-19 * * *"   # hourly on the hour, 07:00-19:00 UTC (~8:00-20:00 London). Two posts/week doesn't need more; schedule posts on the hour and they land within ~10 min
+    # every 15 min, offset from round numbers (07,22,37,52 past), 07:00-19:00 UTC
+    # (~8:00-20:00 London). Round-number crons (":00") queue behind every other repo's
+    # top-of-hour jobs on GitHub's side and can drift badly (a scheduled post once sat
+    # "pending" ~1.5h past due, 2026-07-27, before a check finally ran) - offsetting
+    # avoids that congestion, and checking 4x/hour instead of 1x/hour means one missed
+    # check no longer costs a full hour of drift. Actions minutes are unlimited for
+    # this repo so the extra runs cost nothing.
+    - cron: "7,22,37,52 7-19 * * *"
   workflow_dispatch: {}       # manual trigger for testing
 
 concurrency:
