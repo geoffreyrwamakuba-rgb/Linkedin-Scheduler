@@ -1,0 +1,9 @@
+PySpark's cast() doesn't throw an error on bad data. It just quietly hands back null and keeps running.
+
+That's the trap with type conversion in Spark — most of these functions don't fail loud, they fail quiet.
+
+Built a reference table of 11 functions people hit constantly: casting, dates, timestamps, JSON parsing, booleans. 7 of them share the same failure mode — wrong input in, null out, no error, no warning.
+
+The dangerous part for a data team isn't the bug itself. It's what it looks like from the outside: the job finishes, the DAG goes green, the pipeline "succeeded." Nobody's looking for a problem because nothing failed.
+
+Silent doesn't mean safe.

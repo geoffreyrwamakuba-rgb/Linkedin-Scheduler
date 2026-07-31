@@ -47,6 +47,13 @@
       "image": "images/cron-demystified.png",
       "label": "Cron expressions demystified",
       "status": "pending"
+    },
+    {
+      "when": "2026-08-17T10:00",
+      "text_file": "posts/pyspark-data-type-conversions.txt",
+      "image": "images/pyspark-data-type-conversions.png",
+      "label": "PySpark Data Type Conversions — 11 Functions, 7 Fail Silently",
+      "status": "pending"
     }
   ]
 }
