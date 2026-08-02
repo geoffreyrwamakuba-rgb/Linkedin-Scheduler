@@ -61,6 +61,13 @@
       "image": "images/ref-vs-hardcoded.png",
       "label": "ref() and why Slim CI depends on it",
       "status": "pending"
+    },
+    {
+      "when": "2026-08-24T10:00",
+      "text_file": "posts/materializations-decision-tree.txt",
+      "image": "images/materializations-decision-tree.png",
+      "label": "Materializations — view vs table vs incremental vs ephemeral",
+      "status": "pending"
     }
   ]
 }

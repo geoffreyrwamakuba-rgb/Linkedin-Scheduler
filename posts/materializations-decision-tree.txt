@@ -1,0 +1,15 @@
+Every dbt tutorial teaches four materializations on day one.
+
+Almost nobody teaches when to switch between them.
+
+dbt's own advice is a decision, not a default: start every model as a view, and only move away from it when something actually hurts.
+
+→ View — dbt's default. Rebuilt as a fresh create view as on every run, so it always reflects the latest source data, at zero storage cost. Fine right up until the transformation itself gets heavy — then every query downstream pays that cost, every single time.
+
+→ Table — rebuilt in full as a create table as each run. Fast to query, because the transformation already happened before anyone asks. The cost just moved from "every query" to "every run" — worth paying the moment a BI tool or dashboard queries the model directly.
+
+→ Incremental — processes only new or changed records since the last run, instead of rebuilding the whole table. dbt's own docs are blunt about this one: don't start here. Reach for it when a full rebuild is genuinely too slow, and the underlying data is event-style — new rows landing, old ones rarely changing.
+
+→ Ephemeral — never becomes its own table or view at all. dbt interpolates the SQL straight into whatever references it, as a CTE. No storage, no separate object to query — which is also its limit: you can't query it directly, and stacking too many makes a model hard to debug. Best for a light transformation early in the DAG that only one or two downstream models actually need.
+
+The decision rule dbt itself recommends: start as a view. Move to table only when query speed is the actual problem. Move to incremental only when table rebuilds are the bottleneck and the data is event-style. Reach for ephemeral only when a piece of logic is too small and too local to deserve being its own object.
