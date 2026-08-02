@@ -1,0 +1,13 @@
+Every dbt project ends up with staging models and marts.
+
+Fewer have a real intermediate layer. That gap is usually where the mess creeps in.
+
+→ Staging — one model per source table, named stg_[source]__[entity]s. Renaming, type casting, cents-to-dollars, basic recoding. No joins, no aggregations — the moment you group or join here, you lose access to the raw grain you'll need later. Materialized as a view: zero storage, always fresh, nothing to maintain.
+
+→ Intermediate — where the actual complexity should live. Fanning a table out, collapsing several staging models into one, or isolating one gnarly piece of logic so it doesn't clutter a mart. dbt's own naming convention drops the source-system prefix here and uses a verb instead — int_orders_summed_to_customer, not int_orders. Default to ephemeral, compiled straight into whatever references it, no separate object to maintain.
+
+→ Marts — the business-defined entity, one file per concept: customers, orders — never finance_orders and marketing_orders side by side, dbt's own docs call that exact pattern an anti-pattern. This is the layer people actually query, so materialization follows the same rule as any dbt model: start as a view, move to table once queries get slow, move to incremental once the table itself is too slow to rebuild.
+
+Skip the intermediate layer, and that logic doesn't disappear. It just moves — into a 10-join mart model, or copy-pasted across three marts that quietly drift out of sync with each other.
+
+The fix isn't more layers for their own sake. It's giving the complicated part of the transformation a name and a home, instead of letting it live wherever it first landed.

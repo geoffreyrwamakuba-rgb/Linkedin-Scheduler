@@ -68,6 +68,13 @@
       "image": "images/materializations-decision-tree.png",
       "label": "Materializations — view vs table vs incremental vs ephemeral",
       "status": "pending"
+    },
+    {
+      "when": "2026-08-26T10:00",
+      "text_file": "posts/staging-intermediate-marts.txt",
+      "image": "images/staging-intermediate-marts.png",
+      "label": "Staging → intermediate → marts",
+      "status": "pending"
     }
   ]
 }
