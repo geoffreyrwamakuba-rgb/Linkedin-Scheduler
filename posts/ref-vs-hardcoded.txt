@@ -1,0 +1,19 @@
+Every dbt team eventually asks why a CI check on one changed model takes 20 minutes.
+
+Nine times out of ten, the answer is buried in whether every model actually used ref().
+
+select * from {{ ref('stg_orders') }} instead of a hardcoded table name is the single mechanism dbt uses to know what depends on what.
+
+At parse time, dbt reads every ref() call in the project and builds the dependency graph from it. Two things run entirely on that graph:
+
+→ Run order — dbt builds stg_orders before anything that references it, automatically, no manual sequencing.
+
+→ Slim CI — on a pull request, dbt build --select state:modified+ diffs your changes against production and rebuilds only what changed and what depends on it, skipping everything unrelated. The "depends on it" part only exists because ref() told dbt what depends on what.
+
+Hardcode the table name instead, and dbt doesn't error. It simply never sees the dependency.
+
+Single-threaded, the model can keep running fine for months — dbt just happens to build things in file order. Turn up thread count, and there's no guarantee anymore that stg_orders finishes before the model reading it starts. And on a PR, Slim CI won't even queue that second model for testing, because as far as the graph is concerned, nothing depends on stg_orders at all.
+
+One more way a real ref() still slips past the parser: inside a Jinja if block, dbt doesn't always execute the conditional to find it. dbt's own docs recommend a --depends_on: {{ ref(...) }} comment above the block to force it into the graph anyway.
+
+Four keystrokes build the entire map dbt runs CI, run order, and lineage on. Skip them, and the map has a hole nobody can see — until CI acts on it.

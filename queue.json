@@ -54,6 +54,13 @@
       "image": "images/pyspark-data-type-conversions.png",
       "label": "PySpark Data Type Conversions — 11 Functions, 7 Fail Silently",
       "status": "pending"
+    },
+    {
+      "when": "2026-08-19T10:00",
+      "text_file": "posts/ref-vs-hardcoded.txt",
+      "image": "images/ref-vs-hardcoded.png",
+      "label": "ref() and why Slim CI depends on it",
+      "status": "pending"
     }
   ]
 }
