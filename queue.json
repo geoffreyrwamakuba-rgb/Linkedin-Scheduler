@@ -25,7 +25,9 @@
       "text_file": "posts/p50-p95-p99.txt",
       "image": "images/p50-p95-p99.png",
       "label": "p50/p95/p99 — averages lie",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-08-03T11:50:34+01:00",
+      "post_id": "urn:li:share:7489996131708420096"
     },
     {
       "when": "2026-08-05T10:00",
