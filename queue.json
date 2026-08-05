@@ -34,7 +34,9 @@
       "text_file": "posts/iceberg-delta-hudi.txt",
       "image": "images/iceberg-delta-hudi.png",
       "label": "Iceberg vs Delta Lake vs Hudi",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-08-05T10:43:49+01:00",
+      "post_id": "urn:li:share:7490704111211008000"
     },
     {
       "when": "2026-08-10T10:00",
