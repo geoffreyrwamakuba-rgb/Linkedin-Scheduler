@@ -43,7 +43,9 @@
       "text_file": "posts/dqx-vs-alternatives.txt",
       "image": "images/dqx-vs-alternatives.png",
       "label": "Intro to DQX — what it is vs alternatives",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-08-10T11:04:44+01:00",
+      "post_id": "urn:li:share:7492521311244693504"
     },
     {
       "when": "2026-08-12T10:00",
