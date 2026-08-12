@@ -52,7 +52,9 @@
       "text_file": "posts/cron-demystified.txt",
       "image": "images/cron-demystified.png",
       "label": "Cron expressions demystified",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-08-12T10:45:16+01:00",
+      "post_id": "urn:li:share:7493241190339796992"
     },
     {
       "when": "2026-08-17T10:00",
