@@ -61,7 +61,9 @@
       "text_file": "posts/pyspark-data-type-conversions.txt",
       "image": "images/pyspark-data-type-conversions.png",
       "label": "PySpark Data Type Conversions — 11 Functions, 7 Fail Silently",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-08-17T10:53:22+01:00",
+      "post_id": "urn:li:share:7495055167092932608"
     },
     {
       "when": "2026-08-19T10:00",
