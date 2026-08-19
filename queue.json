@@ -70,7 +70,9 @@
       "text_file": "posts/ref-vs-hardcoded.txt",
       "image": "images/ref-vs-hardcoded.png",
       "label": "ref() and why Slim CI depends on it",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-08-19T10:44:28+01:00",
+      "post_id": "urn:li:share:7495777703753756672"
     },
     {
       "when": "2026-08-24T10:00",
