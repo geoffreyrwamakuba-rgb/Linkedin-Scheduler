@@ -1,0 +1,11 @@
+Picking Databricks compute looks like one decision. It's actually four.
+
+→ Worker type — general purpose for standard ETL with no heavy joins or aggregations. Memory optimized for heavy shuffles: big joins, wide aggregations, ML training. Compute optimized for CPU-bound work — structured streaming, OPTIMIZE, VACUUM. Storage optimized for ad-hoc analysis that rereads the same data. GPU for anything that actually needs hardware acceleration.
+
+→ Node shape — fewer, bigger nodes cut shuffle traffic over the network, the right call for join-heavy or interactive work. More, smaller nodes suit parallel workloads and make autoscaling and spot capacity easier. Databricks says it directly: 2 workers at 16 cores and 128GB have the exact same total capacity as 8 workers at 4 cores and 32GB. Same capacity. Different shuffle cost.
+
+→ Scaling — a predictable, already-tuned job on its own cluster often runs better fixed-size than autoscaled. Ramping from min to max costs time with no upside on a job that doesn't change shape. Autoscaling anyway? Don't set the minimum to 1 — you'll pay a cold-start penalty on every scale-up instead of the saving you were after.
+
+→ Termination — auto-termination only matters for interactive and ML clusters, where an idle notebook is the actual cost leak. Job clusters don't need it. They're already ephemeral, gone the moment the job finishes.
+
+Four decisions, one cluster screen. Defaulting on three of them is the expensive kind of invisible.
