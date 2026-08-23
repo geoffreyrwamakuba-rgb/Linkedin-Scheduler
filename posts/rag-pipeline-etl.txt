@@ -1,0 +1,17 @@
+RAG pipelines are just ETL with extra steps.
+
+Strip away the AI framing and every RAG pipeline breaks down into stages you've already built before.
+
+→ Extract
+Pull raw content from wherever it lives — docs, wikis, PDFs, a database.
+
+→ Transform
+Chunk the text, clean it, and run it through an embedding model to turn it into vectors. The chunk size and embedding model you pick decide how much meaning survives this step — get it wrong and nothing downstream works, no matter how good the model is.
+
+→ Load
+Write the vectors and their metadata into a vector store. Same load step, different target table.
+
+→ Retrieve
+At query time, similarity search decides which chunks are relevant enough to hand to the model. Freshness works the same way it always has — a source document changes, its stored vector goes stale, and re-indexing it is the same incremental-load problem you'd solve with a watermark column or a CDC feed on any other pipeline.
+
+If a RAG pipeline started giving bad answers, what would you check first — the model, or the pipeline feeding it?
