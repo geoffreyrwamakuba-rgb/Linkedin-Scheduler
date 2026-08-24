@@ -79,7 +79,9 @@
       "text_file": "posts/materializations-decision-tree.txt",
       "image": "images/materializations-decision-tree.png",
       "label": "Materializations — view vs table vs incremental vs ephemeral",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-08-24T10:58:23+01:00",
+      "post_id": "urn:li:share:7497593147259187200"
     },
     {
       "when": "2026-08-26T10:00",
