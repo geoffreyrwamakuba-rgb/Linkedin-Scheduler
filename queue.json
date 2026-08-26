@@ -88,7 +88,9 @@
       "text_file": "posts/staging-intermediate-marts.txt",
       "image": "images/staging-intermediate-marts.png",
       "label": "Staging → intermediate → marts",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-08-26T10:53:00+01:00",
+      "post_id": "urn:li:share:7498316565449420800"
     },
     {
       "when": "2026-08-31T10:00",
