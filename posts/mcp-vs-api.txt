@@ -1,0 +1,11 @@
+Most people think MCP is just a bigger API — more tools, more access. The actual difference is who's calling it.
+
+→ An API is built for a developer. Someone reads the docs, hardcodes the specific endpoint, handles the auth, and parses the specific response shape for that one API. A new integration means doing that work again from scratch.
+
+→ MCP is built for a model. During an actual tool call, the model never touches the network itself — it emits a structured request (which tool, what arguments), and the surrounding application executes it, attaches the real credentials, and hands back the result. MCP standardizes that request shape by making every tool describe itself — a schema saying what it does, what it takes, what it returns — so any model can work out how to call it without a developer wiring that specific connection first.
+
+→ Discovery is the real feature. An MCP client can ask a server "what can you do?" at runtime and get back a live list. A REST API can't answer that question — you already have to know its docs before you can call it at all.
+
+→ It doesn't replace APIs. Most MCP servers are a thin wrapper around something that already existed — a REST API, a database, a filesystem — translated into MCP's format: Tools, Resources, and Prompts, over JSON-RPC.
+
+The common comparison is USB-C: one connector shape, instead of a different plug for every device. Same idea here — except the thing plugging in is a model, not a phone.

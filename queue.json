@@ -126,6 +126,13 @@
       "image": "images/dbt-macros.png",
       "label": "Don't repeat yourself in SQL (dbt macros)",
       "status": "pending"
+    },
+    {
+      "when": "2026-09-14T10:00",
+      "text_file": "posts/mcp-vs-api.txt",
+      "image": "images/mcp-vs-api.png",
+      "label": "MCP vs API — the actual difference",
+      "status": "pending"
     }
   ]
 }
