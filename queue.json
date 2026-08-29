@@ -112,6 +112,13 @@
       "image": "images/delta-sharing.png",
       "label": "Share data the normal way, and the two copies start drifting apart",
       "status": "pending"
+    },
+    {
+      "when": "2026-09-09T10:00",
+      "text_file": "posts/scd-snapshots.txt",
+      "image": "images/scd-snapshots.png",
+      "label": "Update a row and whatever it used to say is gone (SCD Type 2 / dbt snapshots)",
+      "status": "pending"
     }
   ]
 }

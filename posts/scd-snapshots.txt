@@ -1,0 +1,13 @@
+Update a row in a normal table, and whatever it used to say is gone. SCD Type 2 is the fix for that — dbt snapshots are just one way to run it.
+
+The technique predates dbt.
+
+→ How it works — dbt compares the source row to the last snapshot. Nothing changed, nothing happens. Something changed, and dbt closes out the old row — dbt_valid_to gets set to the change timestamp — then inserts a new one with dbt_valid_to left null. The old version is never deleted or overwritten.
+
+→ Where it lives — snapshot isn't just the name of the technique. It's also a real folder in a dbt project — snapshots/ — where YAML files like the one in the image live, picked up automatically the next time dbt runs.
+
+→ How dbt decides "changed" — two strategies. timestamp watches one column (updated_at) and is the recommended default, since it keeps working even when the source schema changes. check compares a specific list of columns instead, for tables with no reliable updated_at.
+
+→ Not dbt-specific — Databricks solves the identical problem with its own feature, AUTO CDC in Lakeflow pipelines. Different column names (__START_AT, __END_AT instead of dbt_valid_from/dbt_valid_to), and it can run continuously on a streaming pipeline instead of a scheduled job — but the same idea underneath.
+
+The dbt feature is called snapshots. The Databricks feature is called AUTO CDC.
