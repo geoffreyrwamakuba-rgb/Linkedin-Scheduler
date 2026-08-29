@@ -105,6 +105,13 @@
       "image": "images/databricks-compute-4-decisions.png",
       "label": "Picking Databricks compute looks like one decision. It's actually four.",
       "status": "pending"
+    },
+    {
+      "when": "2026-09-07T10:00",
+      "text_file": "posts/delta-sharing.txt",
+      "image": "images/delta-sharing.png",
+      "label": "Share data the normal way, and the two copies start drifting apart",
+      "status": "pending"
     }
   ]
 }

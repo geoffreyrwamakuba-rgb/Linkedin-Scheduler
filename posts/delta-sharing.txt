@@ -1,0 +1,13 @@
+Share data the normal way, and the two copies start drifting apart the moment the file lands.
+
+Delta Sharing exists to remove the copy entirely.
+
+→ How it actually works — a recipient queries the data directly from the provider's own cloud storage instead of receiving a copy. There's only ever one version of it, and it's always current, because there's nothing else it could be.
+
+→ No platform lock-in — it's an open protocol, not a Databricks-only feature. Databricks ships open connectors for it — Apache Spark, Pandas, Power BI, Tableau, Excel — so a recipient reads the share straight from whatever tool they already use, on AWS, Azure, or GCP, without deploying Databricks themselves.
+
+→ Access without exposure — a provider defines a share as a specific set of tables and grants access through short-lived credentials, not a login to their wider environment. The recipient sees exactly what's in the share and nothing else.
+
+→ What it actually looks like — three lines: CREATE SHARE, ALTER SHARE ... ADD SCHEMA, GRANT SELECT ON SHARE ... TO RECIPIENT. In production, most teams don't type those by hand — they go through Terraform (databricks_share, databricks_recipient, databricks_grants) so shares and grants stay reviewable instead of something someone remembers to click.
+
+Two companies working off the same live data, and neither one owns a copy that can go stale. That's the actual problem being solved — everything else about it, including the new name it picked up in June (OpenSharing, now under the Linux Foundation), is a footnote.
