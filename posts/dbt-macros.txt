@@ -1,0 +1,23 @@
+Don't repeat yourself in SQL.
+
+A macro is dbt's version of a function — write the SQL pattern once, call it anywhere with {{ }} instead of pasting the same CASE statement or calculation into ten different models.
+
+→ How you write one:
+
+{% macro cents_to_dollars(column_name, scale=2) %}
+    ({{ column_name }} / 100)::numeric(16, {{ scale }})
+{% endmacro %}
+
+Call it with {{ cents_to_dollars('amount') }}, and dbt compiles it straight into real SQL before it ever reaches the warehouse:
+
+(amount / 100)::numeric(16, 2)
+
+→ Where they live — macros/ is a real folder. dbt ships 100+ built-in macros before you write a single one of your own.
+
+→ Money, standardized — cents_to_dollars is the example dbt's own docs use, and it's exactly the kind of thing finance teams need identical across every model: one formula, called everywhere, instead of a slightly different rounding rule in each report.
+
+→ Keys, standardized — dbt_utils.generate_surrogate_key(['customer_id', 'order_date']) hashes a list of columns into one deterministic ID — MD5 by default, though the hash itself is swappable (override the default__hash macro for SHA-256 on a larger table, say, where collisions matter more). Every dimension table that needs a surrogate key calls the same macro instead of a slightly different hand-rolled hash in each model.
+
+→ Built-in, not just custom — table, view, incremental, ephemeral aren't special-cased in dbt's core code. They're macros too. is_incremental() is the one most people actually call directly: it returns true only once the target table already exists, so one model file can hold different logic for the first run (build everything) versus every run after (add only what's new).
+
+Favor readability over DRY-ness. A macro that saves ten lines but takes five minutes to trace isn't a win.

@@ -119,6 +119,13 @@
       "image": "images/scd-snapshots.png",
       "label": "Update a row and whatever it used to say is gone (SCD Type 2 / dbt snapshots)",
       "status": "pending"
+    },
+    {
+      "when": "2026-09-11T10:00",
+      "text_file": "posts/dbt-macros.txt",
+      "image": "images/dbt-macros.png",
+      "label": "Don't repeat yourself in SQL (dbt macros)",
+      "status": "pending"
     }
   ]
 }
