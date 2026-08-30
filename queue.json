@@ -133,6 +133,13 @@
       "image": "images/mcp-vs-api.png",
       "label": "MCP vs API — the actual difference",
       "status": "pending"
+    },
+    {
+      "when": "2026-09-16T10:00",
+      "text_file": "posts/s3-storage-classes.txt",
+      "image": "images/s3-storage-classes.png",
+      "label": "S3 storage classes decision tree — Standard vs IA vs Glacier",
+      "status": "pending"
     }
   ]
 }

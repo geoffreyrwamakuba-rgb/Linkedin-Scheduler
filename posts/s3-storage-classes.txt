@@ -1,0 +1,31 @@
+Standard-IA saves 46% on storage. Read the file back once, and the saving is nearly gone.
+
+Standard costs $0.023/GB/month.
+Standard-IA costs $0.0125/GB/month, a saving of $0.0105/GB.
+
+But pulling that GB back costs $0.01 in retrieval fees.
+
+One read a month, and the "cheaper" tier costs the same as Standard. IA only wins on data you're confident won't get touched.
+
+Standard-IA vs Glacier Instant Retrieval, same millisecond access speed.
+
+Glacier Instant Retrieval storage is $0.004/GB.
+Its retrieval fee is $0.03/GB, three times IA's.
+
+Work out the crossover for an object read once: Glacier Instant Retrieval only gets cheaper than IA after about 70 days of storage. Its own minimum commitment is 90 days. By the time AWS lets you archive there, the math has already turned in its favor.
+
+Glacier Instant Retrieval vs Glacier Flexible Retrieval.
+
+Flexible's storage is actually cheaper too, $0.0036/GB.
+Its retrieval is $0.01/GB standard (3-5 hours), or free in bulk (5-12 hours).
+Instant's retrieval is a flat $0.03/GB.
+
+Flexible beats Instant on storage price and retrieval price at once. The only reason to pick Instant is needing the data back in milliseconds instead of hours.
+
+Deep Archive drops storage to $0.00099/GB, a quarter of Flexible's price. The minimum commitment jumps to 180 days, and retrieval takes 12-48 hours. This is the tier for data you're keeping because you're required to, not because you expect to read it.
+
+Every one of these decisions comes down to the same number: how many times you expect to read the data back.
+
+If you already know how your data ages, a Lifecycle Policy runs on a fixed schedule, no monitoring fee, but no flexibility either. Move data to Glacier on day 90 regardless of whether that guess still holds, and you pay a real retrieval fee if it didn't.
+
+S3 Intelligent-Tiering is the better default for most data. It charges a flat $0.0025 per 1,000 objects a month to watch access patterns and move objects automatically, with no retrieval fee across its main tiers. That fee only needs an object to be bigger than 128KB to pay for itself, and most files people actually store clear that easily. It's a bad deal specifically for workloads with huge volumes of genuinely tiny objects, think per-record telemetry or thumbnails, not typical data files.
