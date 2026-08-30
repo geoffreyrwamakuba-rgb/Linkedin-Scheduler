@@ -1,0 +1,13 @@
+Six API architectures exist. Most real systems run three or four of them at once.
+
+Every one answers one question first: does the client ask for data, or does the server hand it over without being asked?
+
+Pulling, and it's a strict, pre-agreed contract, banking, insurance, a legacy system built before REST won? SOAP. The formal WSDL contract is exactly why systems like this haven't moved off it, even though almost nobody chooses it new.
+
+Pulling, and it's a simple, single-shape request? REST. Any HTTP client can call it, no special library needed. Pulling, but the frontend needs nested, varying data from several sources in one call? GraphQL instead. One query returns exactly the fields that screen needs, instead of a REST endpoint handing back more than you asked for, or five round-trips because it handed back less.
+
+Pushing, and it's one internal service calling another where every millisecond of latency compounds? gRPC. Binary Protocol Buffers instead of parsed JSON text, the throughput call between two services you control.
+
+Pushing, and it's client-facing, something that needs to react the instant data changes? One more question decides it: does the client ever need to talk back over that same connection? If not, a live score feed, a build dashboard, an AI response streaming in token by token, Server-Sent Events. Plain HTTP, no special handshake, and the browser's EventSource API reconnects automatically if the connection drops. The trade-off is that one-way limit: a reply means a separate request, not the same channel. If the client genuinely needs to send too, a chat app, a collaborative doc, a multiplayer game, WebSocket instead.
+
+Each one is the right call for exactly one job, and almost no real system runs on only one of them.
