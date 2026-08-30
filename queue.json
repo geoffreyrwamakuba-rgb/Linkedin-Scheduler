@@ -147,6 +147,13 @@
       "image": "images/api-types-decision-tree.png",
       "label": "Six API architectures — the decision tree",
       "status": "pending"
+    },
+    {
+      "when": "2026-09-25T10:00",
+      "text_file": "posts/api-failures-no-error.txt",
+      "image": "images/api-failures-red-tick.png",
+      "label": "Five ways an API can hand you a success code while quietly failing",
+      "status": "pending"
     }
   ]
 }

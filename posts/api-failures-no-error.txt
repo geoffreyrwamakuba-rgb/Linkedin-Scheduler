@@ -1,0 +1,13 @@
+Five ways an API can hand you a success code while quietly failing.
+
+GraphQL returns 200 even when a query partially fails. The spec allows a response to carry both data and an errors array in the same body, since a query with five fields can succeed on four and fail on the fifth. Check only the status code, and the failure is invisible.
+
+Pagination caps do this to reads on any REST API. Ask for more than the default page size, and you get back exactly what the API decided to give you, not what you asked for. GitHub's REST API defaults to 30 results a page, caps at 100 even if you request more, and its own docs acknowledge results can get truncated past that limit with no flag in the response marking it. Assume you got everything back, and you're working from a partial dataset that looks complete.
+
+DynamoDB's BatchWriteItem does the same thing to writes. A batch of 25 puts can return 200 while some of them silently didn't happen. AWS's own docs put the failed ones in an UnprocessedItems field inside a successful response, not in an error. Skip checking that field, and you've dropped writes with nothing telling you so.
+
+Reuse an idempotency key, and you get back the exact original response, not a fresh one. Stripe's idempotency layer saves the first request's result and replays it for every later request carrying the same key. That's the entire point when you're retrying a failed attempt. It's also a trap if you reuse a key for what you thought was a new operation. You get an old, possibly stale, answer with a 200 stamped on it.
+
+202 Accepted only confirms receipt. Whether the job actually finished is a separate question your response never answers. Without a status endpoint to poll or a webhook to receive it, a failed job just never gets mentioned again.
+
+All five return the exact status code you'd get if nothing went wrong at all.
