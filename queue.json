@@ -179,6 +179,13 @@
       "image": "images/data-contracts-schemas.png",
       "label": "Data contracts are schemas with extra steps",
       "status": "pending"
+    },
+    {
+      "when": "2026-09-30T10:00",
+      "text_file": "posts/glue-emr-lambda-compute.txt",
+      "image": "images/glue-emr-lambda-compute.png",
+      "label": "Glue vs EMR vs Lambda - picking the right ETL compute",
+      "status": "pending"
     }
   ]
 }

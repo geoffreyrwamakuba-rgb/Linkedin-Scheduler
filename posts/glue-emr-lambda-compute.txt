@@ -1,0 +1,13 @@
+Lambda's fifteen-minute limit is not a setting you can raise. That one quota settles most ETL compute decisions before you have compared anything else.
+
+Glue, EMR and Lambda overlap far less than the comparison tables suggest. Four questions, in order.
+
+→ How long does it run, and how much memory does it need? Lambda caps at fifteen minutes and ten gigabytes, and both are hard quotas. Cross either and Lambda is out, whatever you would prefer.
+
+→ Then ask whether you actually need Spark. Running for a long time and needing to be split across machines are different problems. A job that spends forty minutes paging through an API is waiting on the network, not running out of CPU. Glue Python Shell runs at 0.0625 of a DPU, and AWS Batch sets no job timeout by default, with a Fargate-backed job good for up to fourteen days. Either beats paying Spark's two-DPU floor for work one machine could do.
+
+→ If you do need Spark, do you need more than Spark? Glue gives you managed Spark and a catalog. EMR gives you the ecosystem around it, Hive, HBase, Presto and Flink, plus release labels that pin the exact application versions you build against.
+
+→ Will the cluster actually stay busy? EMR on EC2 runs about 22% cheaper per hour than Glue 6.0, and you rent it for its whole life, startup and idle gaps included. Intermittent jobs pay that rate without ever collecting the discount.
+
+Glue still wins by elimination for most teams. The branch worth knowing is the second one, because "it runs too long for Lambda" gets heard as "so it needs Spark" far more often than it should.
