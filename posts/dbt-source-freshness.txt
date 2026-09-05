@@ -1,0 +1,13 @@
+A model can pass every test in the project and still be built on yesterday's data.
+
+→ not_null, unique, accepted_values all run against models dbt has already transformed. None of them check whether the source data underneath actually arrived on time.
+
+→ dbt has a separate command for that: dbt source freshness, run straight against the source table, no model involved. Point it at a loaded_at_field, a timestamp column on the raw table, and it queries select max(loaded_at_field), compared against the current warehouse time.
+
+→ warn_after and error_after set two thresholds off that same query. {count: 12, period: hour} logs a warning once the newest row is over 12 hours old, a heads-up. {count: 24, period: hour} fails the check outright past 24 hours, and a failure blocks whatever job step runs next.
+
+→ It only gates anything if you wire it in. dbt build never calls source freshness on its own, add it as its own step ahead of the build in whatever runs the job, or the freshness config in your YAML just sits there, checked by nobody. Even Databricks' own DQX wires this more cleanly: its freshness check runs inline in the same PySpark job as every other rule, not as a second command you have to remember to chain in.
+
+→ Snowflake offers a shortcut, LAST_ALTERED, so a source table doesn't need its own loaded_at_field column at all. The catch: LAST_ALTERED updates on any DDL or DML, including Snowflake's background maintenance, not only on new data landing. It can read "fresh" on a table nothing actually loaded into today.
+
+Most dbt tests check what dbt built. This is the one that checks what it started with.

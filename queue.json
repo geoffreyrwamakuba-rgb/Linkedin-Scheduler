@@ -153,6 +153,13 @@
       "status": "pending"
     },
     {
+      "when": "2026-09-21T10:00",
+      "text_file": "posts/dbt-source-freshness.txt",
+      "image": "images/dbt-source-freshness.png",
+      "label": "A model can pass every test in the project and still be built on yesterday's data",
+      "status": "pending"
+    },
+    {
       "when": "2026-09-25T10:00",
       "text_file": "posts/api-failures-no-error.txt",
       "image": "images/api-failures-red-tick.png",
