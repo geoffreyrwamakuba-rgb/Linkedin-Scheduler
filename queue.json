@@ -172,6 +172,13 @@
       "image": "images/api-failures-red-tick.png",
       "label": "Five ways an API can hand you a success code while quietly failing",
       "status": "pending"
+    },
+    {
+      "when": "2026-09-28T10:00",
+      "text_file": "posts/data-contracts-schemas.txt",
+      "image": "images/data-contracts-schemas.png",
+      "label": "Data contracts are schemas with extra steps",
+      "status": "pending"
     }
   ]
 }

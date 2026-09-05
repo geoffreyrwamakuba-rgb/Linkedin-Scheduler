@@ -1,0 +1,19 @@
+"Data contracts are schemas with extra steps."
+
+That was the standard criticism in 2023, and for hard schema breaks it's fair. Drop a column and the pipeline fails on the next run. You find out in minutes, whether there's a dashboard or an agent downstream. Nothing about that needs a contract.
+
+The changes worth worrying about are the ones that keep everything green.
+
+→ A new value appears in a status enum. Nothing errors, and your aggregations quietly stop adding up to what they added up to last month.
+
+→ A duration column moves from milliseconds to seconds. Still an integer, still populated, and everything built on it is now wrong by a factor of a thousand.
+
+→ dbt already does part of this. Set contract: enforced: true and dbt runs a preflight check before the model builds, failing the run if the output doesn't match the columns and types you declared. That catches structural drift at the transformation boundary. It doesn't catch a value that's the right type and the wrong meaning.
+
+→ The rest is what a contract adds on top. Quality rules with real thresholds, and a freshness SLA, checked against the data itself rather than its shape. The Open Data Contract Standard covers all of that, and it's worth knowing what it is: a description of what a contract says. It specifies nothing about what runs the checks, or when.
+
+→ Why an agent sharpens it. A dashboard has a fixed query and someone who has looked at that number a hundred times and knows roughly what it should say. An agent writing its own SQL reads the schema as it is right now, generates a perfectly valid query against it, and holds no prior about what that column meant last month. It reports the new meaning with the same confidence as the old one.
+
+A broken pipeline is the good outcome. It tells you something changed.
+
+Data contracts are still an organizational problem underneath. A contract nobody enforces is a README with a schema in it.
