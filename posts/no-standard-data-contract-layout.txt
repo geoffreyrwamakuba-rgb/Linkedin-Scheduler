@@ -1,0 +1,17 @@
+Six tools, six different answers to where a data contract file goes. One of them says it shouldn't be a file in your repo at all.
+
+I went looking for the standard layout. There isn't one.
+
+→ Soda is the only one that prescribes an actual directory tree. A soda folder at the repo root, then one folder per data source, then per schema, then the contract files inside. That is Soda's own convention rather than an industry one.
+
+→ dbt uses no separate file at all. The contract is config inside the model's existing properties YAML, contract: enforced: true with a data_type on every column. dbt also refuses to contract sources, on the grounds that they change too much to guarantee, which is the boundary where a contract would have done the most work.
+
+→ datacontract-cli takes the loosest line. A file named datacontract.yaml, no prescribed directory, put it wherever the dataset lives.
+
+→ Gable prescribes no hierarchy either. The contract sits beside the data asset it describes, and a GitHub Action validates it on the pull request.
+
+→ Atlan rejects the premise. The contract is not a repo artifact at all. It lives in the catalog attached to the asset, with YAML as the interchange format.
+
+→ The Open Data Contract Standard specifies the file, not the filesystem. Eleven sections describing what a contract says, and nothing about where it sits.
+
+Nobody standardised this because it was never really a filesystem question. Where the contract lives decides who owns it. In your data repo it is a description you maintain of someone else's output. In the producing service's repo it is a test that fails their build.

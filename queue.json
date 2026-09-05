@@ -186,6 +186,14 @@
       "image": "images/glue-emr-lambda-compute.png",
       "label": "Glue vs EMR vs Lambda - picking the right ETL compute",
       "status": "pending"
+    },
+    {
+      "when": "2026-10-02T10:00",
+      "text_file": "posts/no-standard-data-contract-layout.txt",
+      "image": "images/no-standard-data-contract-layout.png",
+      "image_source": "0. LinkedIn/Images/data contracts repo structure - headed.png",
+      "label": "There is no standard way to lay out a data contract",
+      "status": "pending"
     }
   ]
 }
