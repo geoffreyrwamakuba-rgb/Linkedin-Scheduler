@@ -1,0 +1,19 @@
+Storage and compute you can estimate. The line item that surprises people is the one that charges for moving bytes, not keeping them.
+
+Out to the internet, AWS gives you 100 GB a month free, then charges $0.09/GB up to 10 TB, $0.085 to 50 TB, $0.07 to 150 TB, and $0.05 above that. That's the rate everyone quotes. It's also the one least likely to show up on a data platform's bill, because pipeline data usually never leaves AWS at all.
+
+The charges that actually land are the ones inside the account.
+
+→ Cross-AZ, $0.01/GB in each direction. A Spark cluster whose workers are spread across availability zones pays this on every shuffle. Same job, same data, workers pinned to one AZ, that cost is zero. Multi-AZ is the right call for a database that has to survive an outage, and the wrong default for a transient batch cluster.
+
+→ NAT Gateway, $0.045/hour plus $0.045/GB. A job in a private subnet reading 2 TB from S3 through a NAT Gateway costs $90 in processing for that single run. Run it daily, and that's about $2,700 a month to move data between two AWS services in the same region.
+
+→ A Gateway VPC Endpoint makes that specific traffic free. It's a route table entry, not a server. For S3 and DynamoDB, AWS states plainly there are no hourly and no data processing charges. The $2,700 becomes $0, and the NAT Gateway stays for what it's genuinely for: package installs, container pulls, third-party APIs.
+
+→ Cross-region is the one that compounds quietly. A warehouse querying a bucket in another region pays per-GB on every scan that misses cache. Cross-region bucket replication pays on every object, continuously, for as long as the replication rule exists.
+
+If you're moving 500 GB a month, none of this matters. The per-GB charge is smaller than what the NAT Gateway costs just to sit there.
+
+If you're moving 10 TB a month and nobody owns the AWS bill, some of this is almost certainly already on it.
+
+Compute stops costing money when you turn it off. Transfer keeps billing for as long as two things are still talking to each other.

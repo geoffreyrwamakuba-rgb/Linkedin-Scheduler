@@ -160,6 +160,13 @@
       "status": "pending"
     },
     {
+      "when": "2026-09-23T10:00",
+      "text_file": "posts/aws-data-transfer-costs.txt",
+      "image": "images/aws-data-transfer-costs.png",
+      "label": "Data transfer costs — the silent line item that eats AWS bills",
+      "status": "pending"
+    },
+    {
       "when": "2026-09-25T10:00",
       "text_file": "posts/api-failures-no-error.txt",
       "image": "images/api-failures-red-tick.png",
