@@ -29,8 +29,23 @@ LONDON = ZoneInfo("Europe/London")
 GRACE_HOURS = 48
 API = "https://api.linkedin.com/v2"
 
-TOKEN = os.environ.get("LINKEDIN_ACCESS_TOKEN", "")
-MEMBER_URN = os.environ.get("LINKEDIN_MEMBER_URN", "")
+def _clean_secret(name: str) -> str:
+    """Read a secret env var, stripping anything that would break an HTTP header.
+
+    GitHub secrets can pick up a UTF-8 BOM (\ufeff) or stray whitespace/newlines
+    when they are set from a file written by PowerShell, whose Out-File and ">"
+    default to UTF-8-WITH-BOM. requests encodes header values as latin-1, so a
+    single BOM makes every post fail with:
+        'latin-1' codec can't encode character '\ufeff' in position 7
+    Position 7 is the first character of the token, right after "Bearer ".
+    This bit the queue on 2026-09-07. Strip defensively rather than trusting the
+    secret to be clean.
+    """
+    return os.environ.get(name, "").strip().lstrip("\ufeff").strip().strip('"').strip("'").strip()
+
+
+TOKEN = _clean_secret("LINKEDIN_ACCESS_TOKEN")
+MEMBER_URN = _clean_secret("LINKEDIN_MEMBER_URN")
 HEADERS = {
     "Authorization": f"Bearer {TOKEN}",
     "X-Restli-Protocol-Version": "2.0.0",
