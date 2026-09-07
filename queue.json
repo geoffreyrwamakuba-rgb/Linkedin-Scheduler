@@ -115,7 +115,8 @@
       "text_file": "posts/delta-sharing.txt",
       "image": "images/delta-sharing.png",
       "label": "Share data the normal way, and the two copies start drifting apart",
-      "status": "pending"
+      "status": "failed",
+      "error": "'latin-1' codec can't encode character '\\ufeff' in position 7: ordinal not in range(256)"
     },
     {
       "when": "2026-09-09T10:00",
