@@ -115,7 +115,9 @@
       "text_file": "posts/delta-sharing.txt",
       "image": "images/delta-sharing.png",
       "label": "Share data the normal way, and the two copies start drifting apart",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-09-07T12:00:51+01:00",
+      "post_id": "urn:li:share:7502682294852190208"
     },
     {
       "when": "2026-09-09T10:00",
