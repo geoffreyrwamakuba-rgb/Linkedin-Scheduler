@@ -38,6 +38,9 @@ jobs:
         run: python dispatcher.py
 
       - name: Commit status updates
+        if: always()          # must run even when the dispatcher exits non-zero,
+                              # or a published post's status write-back is lost and
+                              # the next run posts it again (see 2026-07-27)
         run: |
           if ! git diff --quiet queue.json; then
             git config user.name "dispatcher-bot"

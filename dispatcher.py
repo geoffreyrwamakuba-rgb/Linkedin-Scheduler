@@ -106,6 +106,7 @@ def main():
     data = json.loads(QUEUE_PATH.read_text(encoding="utf-8"))
     now = datetime.now(LONDON)
     changed = False
+    failures = []   # only what fails in THIS run, so a stuck item does not re-alert every 15 min
 
     for item in data.get("queue", []):
         if item.get("status") != "pending":
@@ -134,6 +135,7 @@ def main():
             item["status"] = "failed"
             item["error"] = str(e)[:500]
             print(f"FAILED: {label} — {e}")
+            failures.append(item)
         changed = True
         time.sleep(5)
 
@@ -147,6 +149,18 @@ def main():
         days = (datetime.fromisoformat(expires).replace(tzinfo=LONDON) - now).days
         if days <= 7:
             print(f"::warning::LinkedIn token expires in {days} days — re-run tools/linkedin_auth.py locally and update the LINKEDIN_ACCESS_TOKEN secret.")
+
+    # Non-zero exit turns the run red so GitHub emails about it. queue.json is
+    # already written above and the workflow's commit step runs with
+    # if: always(), so the status write-back is never lost to this exit.
+    if failures:
+        for i in failures:
+            label = i.get("label", i.get("text_file", "?"))
+            print(
+                f"::error::Post FAILED ({i['when']}): {label}"
+                f" - {i.get('error', '')}"
+            )
+        sys.exit(f"{len(failures)} post(s) failed - see annotations above")
 
 
 if __name__ == "__main__":
