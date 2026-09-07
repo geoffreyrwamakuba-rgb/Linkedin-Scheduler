@@ -10,6 +10,11 @@ on:
     # check no longer costs a full hour of drift. Actions minutes are unlimited for
     # this repo so the extra runs cost nothing.
     - cron: "7,22,37,52 7-19 * * *"
+    # REALITY CHECK (measured 2026-09-07): GitHub delivers roughly 5 of these 52
+    # runs a day, erratically, sometimes outside the 07-19 window. The offset above
+    # did NOT solve it. What actually drives this workflow is cron-job.org job
+    # 8359053, hitting workflow_dispatch every 30 min (:00/:30) - 91 of the last
+    # 100 runs. Treat this cron as a backup, not the primary. See README.
   workflow_dispatch: {}       # manual trigger for testing
 
 concurrency:
