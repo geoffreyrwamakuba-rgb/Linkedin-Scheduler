@@ -124,7 +124,9 @@
       "text_file": "posts/scd-snapshots.txt",
       "image": "images/scd-snapshots.png",
       "label": "Update a row and whatever it used to say is gone (SCD Type 2 / dbt snapshots)",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-09-09T09:01:01+01:00",
+      "post_id": "urn:li:share:7503361814005624834"
     },
     {
       "when": "2026-09-11T09:00",
