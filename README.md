@@ -29,7 +29,10 @@ linkedin-dispatch` with `cancel-in-progress: false` serialises runs, and an item
 fires while its status is `pending`. The residual risk is a run that publishes but
 fails to push its status write-back — that is the 2026-07-27 double-post mode.
 
-Schedule posts **on the hour** (e.g. 11:00) — they'll land within ~30 minutes.
+Schedule posts **on the hour**, and the standard slot is **09:00 Europe/London**
+(Geoff's call, 2026-09-09 — moved up from 10:00; all pending items were shifted, posted
+history left as it was). They'll land within ~30 minutes, so a 09:00 item goes out on the
+09:00 or 09:30 cron-job.org check.
 Only `pending` items ever fire; `posted`/`failed`/`missed` never re-fire, and an
 empty queue run is a no-op. **A `failed` item is therefore stuck forever unless
 someone resets it to `pending`** — do that inside the 48h grace window or it is lost. Anything more than 48h late is marked `missed`,
