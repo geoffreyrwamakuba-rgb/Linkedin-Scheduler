@@ -151,7 +151,9 @@
       "text_file": "posts/s3-storage-classes.txt",
       "image": "images/s3-storage-classes.png",
       "label": "S3 storage classes decision tree — Standard vs IA vs Glacier",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-09-16T09:00:53+01:00",
+      "post_id": "urn:li:share:7505898496948985856"
     },
     {
       "when": "2026-09-18T09:00",
