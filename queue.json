@@ -160,7 +160,9 @@
       "text_file": "posts/api-types-decision-tree.txt",
       "image": "images/api-types-decision-tree.png",
       "label": "Six API architectures — the decision tree",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-09-18T09:00:51+01:00",
+      "post_id": "urn:li:share:7506623263515582464"
     },
     {
       "when": "2026-09-21T09:00",
