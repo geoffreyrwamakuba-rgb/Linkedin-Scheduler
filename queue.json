@@ -214,6 +214,14 @@
       "image_source": "0. LinkedIn/Images/BEGIN TRANSACTION before a production fix.png",
       "label": "BEGIN TRANSACTION before a production fix",
       "status": "pending"
+    },
+    {
+      "when": "2026-10-07T09:00",
+      "text_file": "posts/legacy-vs-modern-query-plans.txt",
+      "image": "images/legacy-vs-modern-query-plans.png",
+      "image_source": "0. LinkedIn/Images/who decides the query plan.png",
+      "label": "Legacy vs modern query plans",
+      "status": "pending"
     }
   ]
 }

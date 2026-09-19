@@ -1,0 +1,13 @@
+Query plans used to be something you argued with. On a modern warehouse they are closer to something you read afterwards.
+
+→ Postgres still shows you everything. Run EXPLAIN ANALYZE and every node carries the estimated row count next to the actual one. When the optimizer expected 5 rows and got 4,800, the bad guess is sitting on the line that caused it. Then you can overrule the decision: force a different join, rewrite the predicate, add the index it wanted.
+
+→ Snowflake deliberately does not. There are no indexes to pick and no join hints to force. You get a profile after the query has already run, and two numbers carry most of the diagnosis. Partitions scanned against partitions total tells you whether pruning worked, and a ratio near 100% means your filter skipped nothing. Bytes spilled to remote storage tells you the warehouse was too small for what you asked it to do.
+
+→ Spark sits in the middle, and it is the interesting one. df.explain() prints a plan without running anything, so it cannot know what the data really looks like. That is why the first line of the output says AdaptiveSparkPlan isFinalPlan=false. Once the query runs, Adaptive Query Execution rewrites it from real shuffle statistics: coalescing small partitions, switching sort-merge joins to broadcast joins, splitting skewed tasks into even ones. The flag only reads true once it has finished.
+
+So the plan you read is often not the plan that ran.
+
+On a warehouse that leaves you three levers: how the data is laid out, how much compute you gave it, and whether your filter can prune at all.
+
+Most of the tuning moved out of the plan and into the data underneath it.
