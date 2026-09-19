@@ -224,7 +224,7 @@
       "status": "pending"
     },
     {
-      "when": "2026-10-09T09:00",
+      "when": "2026-10-12T09:00",
       "text_file": "posts/reading-a-snowflake-query-profile.txt",
       "image": "images/reading-a-snowflake-query-profile.png",
       "image_source": "0. LinkedIn/Images/reading a snowflake query profile.png",
