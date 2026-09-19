@@ -1,4 +1,4 @@
-A model can pass every test in the project and still be built on yesterday's data.
+A dbt model can pass every test in the project and still be built on yesterday's data.
 
 → not_null, unique, accepted_values all run against models dbt has already transformed. None of them check whether the source data underneath actually arrived on time.
 

@@ -1,4 +1,4 @@
-Storage and compute you can estimate. The line item that surprises people is the one that charges for moving bytes, not keeping them.
+AWS storage and compute you can estimate. The line item that surprises people is the one that charges for moving bytes, not keeping them.
 
 Out to the internet, AWS gives you 100 GB a month free, then charges $0.09/GB up to 10 TB, $0.085 to 50 TB, $0.07 to 150 TB, and $0.05 above that. That's the rate everyone quotes. It's also the one least likely to show up on a data platform's bill, because pipeline data usually never leaves AWS at all.
 
