@@ -211,7 +211,7 @@
       "when": "2026-10-05T09:00",
       "text_file": "posts/begin-transaction-undo-button.txt",
       "image": "images/begin-transaction-undo-button.png",
-      "image_source": "0. LinkedIn/Images/why wrap in a transaction.png",
+      "image_source": "0. LinkedIn/Images/BEGIN TRANSACTION before a production fix.png",
       "label": "BEGIN TRANSACTION before a production fix",
       "status": "pending"
     }
