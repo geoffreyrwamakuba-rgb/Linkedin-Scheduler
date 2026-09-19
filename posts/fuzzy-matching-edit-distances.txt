@@ -1,0 +1,15 @@
+Fuzzy matching comes in two flavours. Snowflake and Spark both ship the one that misses the most common typo.
+
+You reach for it when two systems hold the same real-world thing and there is no shared key. One CRM says Micheal Brown, the other says Michael Brown. An exact join returns nothing, and those two records stay separate customers forever.
+
+→ Where it earns its keep: deduplicating customers after an acquisition, reconciling transactions between two systems that never agreed on an ID, matching supplier names across ERPs, and address matching, which is a category of pain all its own because there are a dozen legitimate ways to write the same street.
+
+→ Levenshtein distance counts the single-character edits needed to turn one string into another: insert, delete, substitute. Micheal to Michael is two edits. You substitute the e for an a, then the a for an e.
+
+→ Damerau-Levenshtein adds one more operation, transposing two adjacent characters. That same pair costs one edit instead of two, because swapping the e and the a is a single move.
+
+→ The difference is not academic. Transposition is the most common typing mistake people make. So a threshold of distance <= 1, which is what most people reach for first, catches that typo under Damerau and silently misses it under plain Levenshtein.
+
+→ And you probably do not have Damerau. Snowflake's EDITDISTANCE is plain Levenshtein, transpositions uncounted. Spark gives you levenshtein() and soundex(), and that is the whole list. The closest thing either of them offers is Snowflake's JAROWINKLER_SIMILARITY, a different algorithm that does account for transpositions and is the better default for names anyway.
+
+Before you spend an afternoon tuning the threshold, check which algorithm is actually running underneath it.
