@@ -1,0 +1,15 @@
+BEGIN TRANSACTION gets used for three reasons: data integrity, a safety net, and write speed. Only one is why you'll actually type it.
+
+Data integrity is the textbook one. Move money between two accounts and that's two UPDATEs. If the second fails after the first already succeeded, ROLLBACK puts both back.
+
+Write speed is less obvious. Outside a transaction the engine writes a log record and waits for the physical disk to confirm it, once per statement. Wrap a thousand INSERTs in one and it waits once, at COMMIT.
+
+→ The safety net is the reason you'll actually reach for it. Open a transaction, run the UPDATE, then SELECT to see what you really touched before you decide anything. Miss a WHERE clause and deactivate every user in the table, and the gap between running it and committing it is the whole difference between a ROLLBACK and an incident.
+
+→ Snowflake supports this properly. AUTOCOMMIT is TRUE by default, so every statement commits itself the moment it succeeds. Open an explicit transaction and that stops being true until you say COMMIT.
+
+→ The trap is DDL. A DDL statement executed inside an open transaction implicitly commits that transaction first, then runs as its own. Run a stray CREATE or ALTER while you're checking your work, and the safety net closed behind you without saying anything.
+
+→ Not every engine gives you this. Databricks returns MULTI_STATEMENT_TRANSACTION_NOT_SUPPORTED for interactive BEGIN and COMMIT. You get BEGIN ATOMIC ... END for a scripted block, or autocommit control through the connector, but not the open-it-and-look-around workflow. And in dbt you rarely type any of it, because dbt manages the transaction around a model build for you.
+
+Worth knowing which of the three your engine actually gives you, before the day you need to undo something.

@@ -206,6 +206,14 @@
       "image_source": "0. LinkedIn/Images/data contracts repo structure - headed.png",
       "label": "There is no standard way to lay out a data contract",
       "status": "pending"
+    },
+    {
+      "when": "2026-10-05T09:00",
+      "text_file": "posts/begin-transaction-undo-button.txt",
+      "image": "images/begin-transaction-undo-button.png",
+      "image_source": "0. LinkedIn/Images/why wrap in a transaction.png",
+      "label": "BEGIN TRANSACTION before a production fix",
+      "status": "pending"
     }
   ]
 }
