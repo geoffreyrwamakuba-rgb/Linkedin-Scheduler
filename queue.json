@@ -222,6 +222,14 @@
       "image_source": "0. LinkedIn/Images/who decides the query plan.png",
       "label": "Legacy vs modern query plans",
       "status": "pending"
+    },
+    {
+      "when": "2026-10-09T09:00",
+      "text_file": "posts/reading-a-snowflake-query-profile.txt",
+      "image": "images/reading-a-snowflake-query-profile.png",
+      "image_source": "0. LinkedIn/Images/reading a snowflake query profile.png",
+      "label": "Reading a Snowflake Query Profile",
+      "status": "pending"
     }
   ]
 }

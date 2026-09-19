@@ -1,0 +1,19 @@
+Snowflake's Query Profile opens on a diagram. That diagram is the least useful thing on the screen.
+
+Start with the Profile Overview, because it tells you what kind of problem you have before you read a single operator.
+
+→ Time in Processing means the warehouse was actually computing. The query is doing real work and the fix is usually less work: fewer rows, fewer joins, a smaller result.
+
+→ Time in Local Disk I/O means it was waiting on the SSD cache. Often fine, sometimes a sign the working set no longer fits.
+
+→ Time in Remote Disk I/O means it was waiting on cloud storage. That is the slow path, and it usually means you are reading far more data than the query needs.
+
+Only then open Most Expensive Nodes, which gives you the top operators by execution time. Now you know both the kind of problem and where it lives.
+
+→ On a TableScan, the number that matters is partitions scanned against partitions total. That ratio is your pruning. 12 of 4,096 is working as designed. 4,000 of 4,096 means your filter skipped nothing, and a filter that wraps the column in a function is usually why.
+
+→ In the Spilling section, bytes spilled to local storage means an operator outgrew memory. Bytes spilled to remote storage means it outgrew the local disk too. That second one is the clearest single sign the warehouse is too small for what you asked it to do.
+
+→ Percentage scanned from cache tells you whether you paid for the read at all. A cold first run and a warm second run are different queries as far as this number is concerned, which is worth remembering before you claim a change made something faster.
+
+The diagram shows you what ran. These four numbers tell you why it was slow.
