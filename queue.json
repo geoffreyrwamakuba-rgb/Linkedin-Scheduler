@@ -169,7 +169,9 @@
       "text_file": "posts/dbt-source-freshness.txt",
       "image": "images/dbt-source-freshness.png",
       "label": "A dbt model can pass every test in the project and still be built on yesterday's data",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-09-21T09:00:49+01:00",
+      "post_id": "urn:li:share:7507710418295975937"
     },
     {
       "when": "2026-09-23T09:00",
