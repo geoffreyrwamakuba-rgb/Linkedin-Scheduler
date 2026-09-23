@@ -178,7 +178,9 @@
       "text_file": "posts/aws-data-transfer-costs.txt",
       "image": "images/aws-data-transfer-costs.png",
       "label": "Data transfer costs — the silent line item that eats AWS bills",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-09-23T09:00:51+01:00",
+      "post_id": "urn:li:share:7508435202961055744"
     },
     {
       "when": "2026-09-25T09:00",
