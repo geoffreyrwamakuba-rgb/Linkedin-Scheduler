@@ -205,7 +205,9 @@
       "text_file": "posts/glue-emr-lambda-compute.txt",
       "image": "images/glue-emr-lambda-compute.png",
       "label": "Glue vs EMR vs Lambda - picking the right ETL compute",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-09-30T09:00:49+01:00",
+      "post_id": "urn:li:share:7510971911053651968"
     },
     {
       "when": "2026-10-02T09:00",
