@@ -260,6 +260,14 @@
       "status": "pending"
     },
     {
+      "when": "2026-10-16T09:00",
+      "text_file": "posts/spreadsheet-production-dependency.txt",
+      "image": "images/spreadsheet-production-dependency.png",
+      "image_source": "0. LinkedIn/Images/spreadsheet three rules.png",
+      "label": "The spreadsheet that became a production dependency",
+      "status": "pending"
+    },
+    {
       "when": "2026-10-19T09:00",
       "text_file": "posts/reading-a-spark-plan.txt",
       "image": "images/reading-a-spark-plan.png",

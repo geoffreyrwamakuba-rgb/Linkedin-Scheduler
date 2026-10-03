@@ -1,0 +1,19 @@
+Somewhere upstream of your warehouse there is a spreadsheet a person edits by hand, and a pipeline that breaks when they do.
+
+It has been load-bearing for two years, with no schema and nobody owning it on paper. Everybody knows about it. The instinct is to delete it.
+
+That usually fails. The sheet exists for a reason the warehouse does not cover: someone has to enter a judgement no system produces, an override, a mapping, a rate agreed in a meeting. Delete it and the dependency just moves somewhere you cannot see.
+
+What makes it different from every other upstream source is that the producer is a person, not a service.
+
+→ You cannot ask them to publish a schema, version an interface or announce a breaking change. Whatever you build has to work without their cooperation, because they do not think of themselves as running a system.
+
+→ So validate at the boundary. Column names, types, row counts and the two or three business rules that matter, checked at ingestion, before anything downstream touches it.
+
+→ Then fail toward the person who changed it. An engineer can patch a renamed column in five minutes, and that is the trap: every quiet fix teaches the producer that nothing downstream depends on them, so the next change arrives unannounced too.
+
+→ Renames are the easy half anyway. The case that hurts is a column that keeps its name and changes its meaning, net where it used to be gross. The shape still validates and every number downstream is wrong.
+
+→ So freeze the shape. One named owner, one tab nothing else writes to, and three rules: add columns at the end, never rename, never reorder.
+
+The worst time to find out the shape changed is month end, when the person who owns the sheet is busiest and least likely to mention it.
