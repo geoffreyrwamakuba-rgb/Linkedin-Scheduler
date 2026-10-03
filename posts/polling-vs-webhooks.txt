@@ -1,0 +1,15 @@
+Polling and webhooks answer the same question: how do I find out something happened over there? Go and look, or be told.
+
+That is the whole choice. Everything else is a consequence of who makes the call.
+
+→ Go and look is polling. You call their API on a schedule. You pick the interval, so you control the load, and nothing breaks while you are not watching. The price is that almost every call comes back empty, and an event sits unseen for up to one full interval.
+
+→ Be told is a webhook. You register a URL with them once and subscribe to the events you care about. When one happens, they send an HTTP request to your URL with the details. No lag, no empty calls. The price is that you are now the server: public endpoint, you check the caller is really them, and traffic arrives at whatever rate they send it.
+
+It comes down to who knows when the event will happen.
+
+→ Poll when the timing is yours. Nightly loads, backfills, month end close. You decided the schedule, so asking on that schedule wastes nothing, and you get back a complete list you can read again tomorrow.
+
+→ Use a webhook when the timing is theirs. A customer acts, a bank confirms a payment, a file lands in a bucket. There is no schedule to match, so polling means guessing: poll often and you burn thousands of empty calls, poll rarely and you are slow. Being told removes the guess.
+
+Most production setups run both. The webhook for speed, a scheduled list call to catch whatever it dropped.

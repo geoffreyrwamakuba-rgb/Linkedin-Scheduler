@@ -252,6 +252,14 @@
       "status": "pending"
     },
     {
+      "when": "2026-10-14T09:00",
+      "text_file": "posts/polling-vs-webhooks.txt",
+      "image": "images/polling-vs-webhooks.png",
+      "image_source": "0. LinkedIn/Images/polling vs webhooks - go and look or be told.png",
+      "label": "Polling vs webhooks, the concept",
+      "status": "pending"
+    },
+    {
       "when": "2026-10-19T09:00",
       "text_file": "posts/reading-a-spark-plan.txt",
       "image": "images/reading-a-spark-plan.png",
