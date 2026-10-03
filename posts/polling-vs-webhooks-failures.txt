@@ -8,7 +8,7 @@ Polling breaks in ways you can see.
 
 → You see state, not events. If a record changes twice between two polls, you only ever get the final version. Anything that needed the step in between is gone and nothing records that it happened.
 
-→ A stopped poller looks identical to a quiet week. No errors, no alerts, just a number that slowly stops moving.
+→ A stopped poller looks identical to a quiet week. Nothing throws an error, and the only symptom is a number that slowly stops moving.
 
 Webhooks break in ways you have to go looking for.
 
