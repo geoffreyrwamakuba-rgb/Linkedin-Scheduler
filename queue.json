@@ -250,6 +250,14 @@
       "image_source": "0. LinkedIn/Images/reading a snowflake query profile.png",
       "label": "Reading a Snowflake Query Profile",
       "status": "pending"
+    },
+    {
+      "when": "2026-10-19T09:00",
+      "text_file": "posts/reading-a-spark-plan.txt",
+      "image": "images/reading-a-spark-plan.png",
+      "image_source": "0. LinkedIn/Images/reading a spark plan - one query two directions.png",
+      "label": "How to read a Databricks/Spark plan",
+      "status": "pending"
     }
   ]
 }

@@ -1,0 +1,15 @@
+A Databricks query plan reads bottom to top, and the line at the bottom decides most of your runtime.
+
+That line is the scan, where Spark reads files from storage. Everything above it only sees rows the scan handed up, so the cheapest work in a query is the reading it skipped. Read it in the Spark UI rather than from df.explain(), which runs nothing and prints a plan made before Spark saw any real data. The UI draws the same tree the other way up, scan at the top, so start where the data does.
+
+→ The scan line carries three filter fields doing three different jobs. PartitionFilters skip whole directories before a file is opened. PushedFilters go down into the Parquet reader and skip row groups inside the files it did open. DataFilters is every filter on a data column, and PushedFilters is the subset the file format could accept.
+
+→ When PartitionFilters and PushedFilters are both empty, the scan is reading the whole table and your WHERE clause gets applied afterwards, by the Filter node above it.
+
+→ Exchange means a shuffle. Rows cross the network and get regrouped by key, usually the most expensive thing in the plan. The Exchange count tells you more than the plan's length does.
+
+→ The join operator tells you what the join cost. BroadcastHashJoin copies the small side to every executor and shuffles nothing. SortMergeJoin shuffles both sides and sorts them, and seeing one against a tiny table usually means the size estimate was wrong.
+
+→ On Databricks, colour is information. Photon operators show orange in the Spark UI and standard Spark operators blue, so a blue island in an orange plan is the part that dropped back to the JVM. A UDF is the usual culprit.
+
+Before adding workers, read the scan line. A bigger cluster reads the same unnecessary bytes faster, which is the most expensive way to fix a missing filter.
