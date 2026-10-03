@@ -1,0 +1,11 @@
+SQS, SNS and EventBridge all move messages between AWS services. The useful difference is what happens when nobody is listening.
+
+→ SQS is a to-do list. A consumer polls the queue, takes an item, works on it, deletes it. Until that happens the item just sits there, for up to 14 days, and one item goes to exactly one worker. Reach for it when the work must not be lost even if the worker is down or mid-deploy. The messages wait.
+
+→ SNS is an announcement. Publish once and every subscriber gets its own copy, pushed the moment it goes out. Nothing is stored, so a subscriber that was down did not get it late, it missed it entirely. Reach for it when several systems need telling at the same time.
+
+→ EventBridge is a sorting office. Rules read the content of the event and decide which target it goes to, so one bus can feed a dozen consumers off different conditions. It retries hard, for 24 hours and up to 185 attempts, and it makes no promises about order.
+
+→ The combination you will actually see in production is SNS in front of several SQS queues. Announce once, and every consumer gets its own to-do list to work through at its own pace.
+
+Decide the persistence question first, because it is the one you cannot bolt on afterwards. Only one of the three holds anything by itself.

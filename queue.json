@@ -282,6 +282,14 @@
       "image_source": "0. LinkedIn/Images/polling vs webhooks - both break.png",
       "label": "Polling vs webhooks, the failure modes",
       "status": "pending"
+    },
+    {
+      "when": "2026-10-23T09:00",
+      "text_file": "posts/sqs-sns-eventbridge.txt",
+      "image": "images/sqs-sns-eventbridge.png",
+      "image_source": "0. LinkedIn/Images/SQS SNS EventBridge three analogies.png",
+      "label": "SQS vs SNS vs EventBridge in plain English",
+      "status": "pending"
     }
   ]
 }
