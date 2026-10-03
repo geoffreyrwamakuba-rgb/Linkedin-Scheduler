@@ -266,6 +266,14 @@
       "image_source": "0. LinkedIn/Images/reading a spark plan - one query two directions.png",
       "label": "How to read a Databricks/Spark plan",
       "status": "pending"
+    },
+    {
+      "when": "2026-10-21T09:00",
+      "text_file": "posts/polling-vs-webhooks-failures.txt",
+      "image": "images/polling-vs-webhooks-failures.png",
+      "image_source": "0. LinkedIn/Images/polling vs webhooks - both break.png",
+      "label": "Polling vs webhooks, the failure modes",
+      "status": "pending"
     }
   ]
 }

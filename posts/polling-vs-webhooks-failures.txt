@@ -1,0 +1,23 @@
+Polling and webhooks both break. The difference is whether you find out.
+
+A previous post was the choice between them. This one is what each costs you once it is running.
+
+Polling breaks in ways you can see.
+
+→ You get rate limited. Poll often enough to keep the lag down and you start collecting 429s, usually at the busiest moment, which is exactly when the data mattered.
+
+→ You see state, not events. If a record changes twice between two polls, you only ever get the final version. Anything that needed the step in between is gone and nothing records that it happened.
+
+→ A stopped poller looks identical to a quiet week. No errors, no alerts, just a number that slowly stops moving.
+
+Webhooks break in ways you have to go looking for.
+
+→ You have to answer fast. The provider waits on your reply to decide whether it got through, so a handler that does real work before replying is logged as a failed delivery. Reply first, then do the work.
+
+→ The same event can arrive twice. Delivery is at least once, not exactly once, so record each event's ID and ignore the ones already handled. Not the timestamp, because two events can share a second.
+
+→ Events arrive out of order. The created, invoiced and paid events for one subscription can land in any sequence, and a handler that assumes order works right up until there is enough traffic for it not to.
+
+→ Retries stop. Providers retry on a backoff for hours or days, then give up. An outage longer than that window leaves a gap, and nothing will tell you it is there.
+
+Polling assumes you can afford to be late. A webhook assumes you were listening.
