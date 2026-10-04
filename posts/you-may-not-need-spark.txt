@@ -1,0 +1,23 @@
+Spark exists because the data would not fit on one machine. One machine now rents with six terabytes of memory.
+
+A single EC2 high memory instance gives you 6 TiB of RAM and 448 vCPUs. One box. No cluster, and no network between the parts of your job. Whether your data fits on one machine has a different answer than it did when most of us learned the rule.
+
+→ DuckDB and Polars are built for that machine. DuckDB gives you SQL, Polars gives you DataFrames, and both run inside your own process. Same machine, no driver, no executors, nothing serialised between them.
+
+→ Neither needs everything in memory. DuckDB sets its memory limit to 80% of physical RAM by default and spills intermediates to disk when a query outgrows it, so larger than memory gets slower rather than failing.
+
+→ What a cluster costs you when you did not need one is mostly not the compute. It is the minutes before your code starts, the shuffle across the network, the tuning, and a second system to understand at 3am.
+
+Spark still earns its place. Five cases where it is the right answer:
+
+→ The working set genuinely does not fit, or it would take nine hours on one box and twenty minutes on sixty. Size and time are different reasons, and the second one is more common.
+
+→ The job has to survive a machine dying halfway through.
+
+→ You need stateful streaming. Running totals over a window, deduplication, joining two live streams. The job has to remember things between events and pick up where it left off.
+
+→ You are on a lakehouse platform. With Delta, Unity Catalog and Auto Loader, Spark is the substrate rather than a performance choice, and leaving it means leaving the platform.
+
+→ The cluster already exists. One more job on it costs almost nothing, while a new tool costs a deployment path and someone to learn it.
+
+That rule of thumb about reaching for a cluster was written for a much smaller machine. The machine changed. The rule mostly did not.

@@ -300,6 +300,14 @@
       "status": "pending"
     },
     {
+      "when": "2026-10-28T09:00",
+      "text_file": "posts/you-may-not-need-spark.txt",
+      "image": "images/you-may-not-need-spark.png",
+      "image_source": "0. LinkedIn/Images/six tib on one machine.png",
+      "label": "You probably do not need Spark",
+      "status": "pending"
+    },
+    {
       "when": "2026-10-30T09:00",
       "text_file": "posts/azure-messaging-four-ways.txt",
       "image": "images/azure-messaging-four-ways.png",
