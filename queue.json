@@ -292,6 +292,14 @@
       "status": "pending"
     },
     {
+      "when": "2026-10-26T09:00",
+      "text_file": "posts/capacity-vs-consumption.txt",
+      "image": "images/capacity-vs-consumption.png",
+      "image_source": "0. LinkedIn/Images/capacity ceiling - pay more or wait.png",
+      "label": "Capacity pricing vs consumption pricing",
+      "status": "pending"
+    },
+    {
       "when": "2026-10-30T09:00",
       "text_file": "posts/azure-messaging-four-ways.txt",
       "image": "images/azure-messaging-four-ways.png",

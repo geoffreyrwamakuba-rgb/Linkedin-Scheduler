@@ -1,0 +1,13 @@
+Buying "capacity" means two opposite things depending on the platform. One caps your bill. The other caps your throughput.
+
+Every platform eventually offers a committed plan instead of pay as you go, and the pitch is identical everywhere. Commit up front, pay less per unit. What differs is what happens when you run out, and that is the part worth checking before anyone signs.
+
+→ Databricks and Snowflake sell capacity as a spend commitment. You buy a dollar amount up front, DBCUs or credits, at a discount. Use it all and the work keeps running, billed at standard rates. You get a bigger invoice. Nothing slows down.
+
+→ BigQuery sells capacity as slots, which is throughput. Buy a reservation and that is the compute you have. Ask for more than you bought and the work queues until slots free up. Google does not bill you for the extra. You wait instead.
+
+→ Fabric sells throughput too, and enforces it hardest. Go over and you get ten minutes of grace. After that, interactive jobs are delayed twenty seconds at submission. Past an hour, they are rejected. Past a day, everything is rejected, including background jobs, until the overage burns off.
+
+So "we moved to capacity pricing" tells you almost nothing on its own. Four platforms, three completely different things to be afraid of: a surprise invoice, a slow morning, or a refresh that will not start at all.
+
+One model protects your budget and puts your deadlines at risk. The other protects your deadlines and puts your budget at risk.
