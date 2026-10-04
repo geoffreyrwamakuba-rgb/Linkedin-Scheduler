@@ -290,6 +290,14 @@
       "image_source": "0. LinkedIn/Images/SQS SNS EventBridge three analogies.png",
       "label": "SQS vs SNS vs EventBridge in plain English",
       "status": "pending"
+    },
+    {
+      "when": "2026-10-30T09:00",
+      "text_file": "posts/azure-messaging-four-ways.txt",
+      "image": "images/azure-messaging-four-ways.png",
+      "image_source": "0. LinkedIn/Images/azure messaging four ways.png",
+      "label": "Azure messaging splits four ways",
+      "status": "pending"
     }
   ]
 }

@@ -1,0 +1,17 @@
+Azure messaging splits four ways, and the first split is not the one people expect. Two of them carry messages, two carry events.
+
+Microsoft's own distinction: a message is data with a contract behind it, where the sender expects the receiver to do something and say so. An event is a notification that something changed, and the publisher has no expectation about what happens next.
+
+Messages:
+
+→ Storage queues are the plain one. Up to 64 KB a message, a queue that can reach 5 PiB, and you poll it. Ordering is best effort, and dead-lettering and duplicate detection are things you build yourself.
+
+→ Service Bus queues are the enterprise one. FIFO through sessions, duplicate detection, transactions, automatic dead-lettering, and messages up to 100 MB on the right tier. The ceiling is 80 GB of queue.
+
+→ The published tiebreaker between those two is size. Microsoft says use Storage queues when the queue has to hold more than 80 GB, and Service Bus when it will not.
+
+Events:
+
+→ Event Grid routes discrete events. Something changed, and whoever subscribed hears about it. It is the reactive, serverless half of the picture.
+
+→ Event Hubs is not a queue at all. A queue hands each item to one worker and deletes it. Event Hubs keeps an ordered log that nothing is removed from, and every reader tracks its own position, so ten systems can read the same events without affecting each other. That is what telemetry needs and what a work item does not.
