@@ -225,7 +225,9 @@
       "image": "images/begin-transaction-undo-button.png",
       "image_source": "0. LinkedIn/Images/BEGIN TRANSACTION before a production fix.png",
       "label": "BEGIN TRANSACTION before a production fix",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-10-05T09:00:54+01:00",
+      "post_id": "urn:li:share:7512783871235575808"
     },
     {
       "when": "2026-10-07T09:00",
