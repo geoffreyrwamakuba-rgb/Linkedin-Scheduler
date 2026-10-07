@@ -235,7 +235,9 @@
       "image": "images/legacy-vs-modern-query-plans.png",
       "image_source": "0. LinkedIn/Images/who decides the query plan.png",
       "label": "Legacy vs modern query plans",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-10-07T09:00:52+01:00",
+      "post_id": "urn:li:share:7513508637445922816"
     },
     {
       "when": "2026-10-09T09:00",
