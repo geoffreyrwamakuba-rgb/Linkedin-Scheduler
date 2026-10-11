@@ -2,7 +2,7 @@ A Databricks query plan reads bottom to top, and the line at the bottom decides 
 
 That line is the scan, where Spark reads files from storage. Everything above it only sees rows the scan handed up, so the cheapest work in a query is the reading it skipped. Read it in the Spark UI rather than from df.explain(), which runs nothing and prints a plan made before Spark saw any real data. The UI draws the same tree the other way up, scan at the top, so start where the data does.
 
-→ The scan line carries three filter fields doing three different jobs. PartitionFilters skip whole directories before a file is opened. PushedFilters go down into the Parquet reader and skip row groups inside the files it did open. DataFilters is every filter on a data column, and PushedFilters is the subset the file format could accept.
+→ The scan line lists three kinds of filter, and only two of them skip any data. PartitionFilters skip whole folders, so those files are never opened. PushedFilters work inside the files that were opened, skipping blocks of rows that cannot match. DataFilters skips nothing by itself. It is the full list of your filters on ordinary columns, pushed or not.
 
 → When PartitionFilters and PushedFilters are both empty, the scan is reading the whole table and your WHERE clause gets applied afterwards, by the Filter node above it.
 
