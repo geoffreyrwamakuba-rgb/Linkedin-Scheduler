@@ -1,0 +1,15 @@
+A Python lockfile is the difference between "pandas 2-point-something" and pandas 2.2.3.
+
+The pyproject.toml lists the versions you asked for. The lockfile lists the ones you actually got.
+
+In pyproject.toml you write the handful of packages you chose, each with a range: pandas at 2.0 or above, below 3.0. That one line pulls in five more packages you never named, and the range means an install next month can land on different versions than an install today.
+
+→ The lockfile is the resolved answer. Poetry works out one set of versions that fit together and writes down every package at an exact version, including the ones your packages depend on.
+
+→ Commit it. With poetry.lock in the repo, "poetry install" uses the exact versions in the file. Without it, each machine resolves fresh from the ranges.
+
+→ Keep both files. The lockfile alone cannot say which packages you chose or how far each one may move, and that is what an upgrade needs to know.
+
+→ Check they agree. Edit pyproject.toml without re-locking and the two drift apart. "poetry check" validates one against the other, so run it in CI.
+
+A lockfile still leaves gaps. It does not install Python itself, and it knows nothing about system libraries or the operating system underneath. uv covers the first by downloading the Python version a project needs, and a container covers the rest.

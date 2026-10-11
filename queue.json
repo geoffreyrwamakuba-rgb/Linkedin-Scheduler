@@ -336,6 +336,14 @@
       "image_source": "0. LinkedIn/Images/sql window functions cheat sheet.png",
       "label": "SQL window functions cheat sheet",
       "status": "pending"
+    },
+    {
+      "when": "2026-11-06T09:00",
+      "text_file": "posts/python-dependencies-asked-vs-got.txt",
+      "image": "images/python-dependencies-asked-vs-got.png",
+      "image_source": "0. LinkedIn/Images/python dependencies - asked for vs got.png",
+      "label": "Python dependencies: asked for vs got",
+      "status": "pending"
     }
   ]
 }
