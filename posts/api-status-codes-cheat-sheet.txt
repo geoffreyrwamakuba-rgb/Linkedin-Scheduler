@@ -1,0 +1,13 @@
+An API status code's first digit tells you whose problem it is before you read anything else.
+
+→ 2xx means it worked.
+
+→ 3xx means what you asked for is somewhere else, or the copy you already have is still good. You will rarely see one, because most HTTP libraries follow the redirect for you and hand back the final response.
+
+→ 4xx means the request is the problem. Sending the same thing again usually gets the same answer, so fix it first.
+
+→ 5xx means the server failed. That is often temporary, so retry with a growing pause between attempts.
+
+The one worth remembering is 429. It sits in the 4xx family, but the request itself is fine and there were simply too many of them. Wait, then send it again. Many APIs say how long to wait in a Retry-After header.
+
+The image has the codes worth knowing by heart. Save it for the next time a pipeline fails with a number and no explanation.

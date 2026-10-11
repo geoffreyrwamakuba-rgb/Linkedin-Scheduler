@@ -320,6 +320,14 @@
       "image_source": "0. LinkedIn/Images/azure messaging four ways.png",
       "label": "Azure messaging splits four ways",
       "status": "pending"
+    },
+    {
+      "when": "2026-11-02T09:00",
+      "text_file": "posts/api-status-codes-cheat-sheet.txt",
+      "image": "images/api-status-codes-cheat-sheet.png",
+      "image_source": "0. LinkedIn/Images/api status codes cheat sheet.png",
+      "label": "API status codes cheat sheet",
+      "status": "pending"
     }
   ]
 }
