@@ -10,6 +10,4 @@ That line is the scan, where Spark reads files from storage. Everything above it
 
 → The join operator tells you what the join cost. BroadcastHashJoin copies the small side to every executor and shuffles nothing. SortMergeJoin shuffles both sides and sorts them, and seeing one against a tiny table usually means the size estimate was wrong.
 
-→ On Databricks, colour is information. Photon operators show orange in the Spark UI and standard Spark operators blue, so a blue island in an orange plan is the part that dropped back to the JVM. A UDF is the usual culprit.
-
 Before adding workers, read the scan line. A bigger cluster reads the same unnecessary bytes faster, which is the most expensive way to fix a missing filter.
