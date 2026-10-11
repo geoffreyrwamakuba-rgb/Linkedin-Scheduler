@@ -1,0 +1,15 @@
+SQL window functions all agree until two rows tie, and then ROW_NUMBER, RANK and DENSE_RANK give three different answers.
+
+Take four sales reps ordered by amount: 90, 80, 80, 70. Two of them tie on 80, and every difference below starts at that tie.
+
+→ ROW_NUMBER gives 1, 2, 3, 4. Every row gets its own number, so one tied rep lands on 2 and the other on 3, and SQL does not promise which. Add a tiebreaker column to the ORDER BY if the result has to be the same on every run.
+
+→ RANK gives 1, 2, 2, 4. Ties share a rank and the next rank is skipped.
+
+→ DENSE_RANK gives 1, 2, 2, 3. Ties share a rank and nothing is skipped.
+
+→ LAG(amount, 1) and LEAD(amount, 1) read the previous and next row's value, which is how you get a day-on-day change without a self-join. The 1 is how many rows to step, and it is the default, so LAG(amount) means the same thing. The first row has no previous row, so LAG returns NULL there.
+
+→ A running total is SUM(amount) with an ORDER BY inside OVER. Add ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW and it goes one row at a time: 170, then 250. Switch ROWS to RANGE, with the same words after it, and tied rows count as one group, so both 80s show 250. Write no frame at all and you get the RANGE version, the standard default that PostgreSQL and Snowflake both follow.
+
+The running total is the easy one to miss. The query runs and the final total is right, so nothing flags it. One row in the middle carries a number nobody asked for.

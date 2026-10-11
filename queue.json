@@ -328,6 +328,14 @@
       "image_source": "0. LinkedIn/Images/api status codes cheat sheet.png",
       "label": "API status codes cheat sheet",
       "status": "pending"
+    },
+    {
+      "when": "2026-11-04T09:00",
+      "text_file": "posts/sql-window-functions-cheat-sheet.txt",
+      "image": "images/sql-window-functions-cheat-sheet.png",
+      "image_source": "0. LinkedIn/Images/sql window functions cheat sheet.png",
+      "label": "SQL window functions cheat sheet",
+      "status": "pending"
     }
   ]
 }
