@@ -265,7 +265,9 @@
       "image": "images/polling-vs-webhooks.png",
       "image_source": "0. LinkedIn/Images/polling vs webhooks - go and look or be told.png",
       "label": "Polling vs webhooks, the concept",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-10-14T09:00:55+01:00",
+      "post_id": "urn:li:share:7516045367298293760"
     },
     {
       "when": "2026-10-16T09:00",
