@@ -1,0 +1,13 @@
+Four ways a NULL in SQL can mess with your data pipeline.
+
+NULL means unknown, so comparing anything to it gives UNKNOWN. NULL <> 'a@x.com' comes out UNKNOWN, and a WHERE clause only keeps rows that come out TRUE.
+
+→ Change detection. WHERE old.email <> new.email skips a customer whose email went from NULL to a real address, or was cleared back to NULL, so the target table keeps the old value. old.email IS DISTINCT FROM new.email treats NULL as a comparable value, and PostgreSQL, Snowflake and Databricks all support it.
+
+→ Anti-joins. WHERE id NOT IN (SELECT customer_id FROM orders) returns zero rows if a single customer_id is NULL. Under the hood that is id <> 1 AND id <> 2 AND id <> NULL, and the last part can never be TRUE. A "customers with no orders" check that comes back empty looks like good news. NOT EXISTS gives the right answer.
+
+→ Filters. WHERE status <> 'cancelled' drops the cancelled rows, and also every row where status is NULL.
+
+→ Averages. AVG takes the mean of the non-NULL values only, so over 10, NULL and 20 it returns 15. If that NULL was a day with no sales, the real average is 10. COALESCE(amount, 0) inside the AVG fixes it, as long as NULL really does mean zero there.
+
+Quick way to find them in your own code: search for NOT IN and <> on columns that can be NULL.

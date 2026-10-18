@@ -350,6 +350,14 @@
       "image_source": "0. LinkedIn/Images/python dependencies - asked for vs got.png",
       "label": "Python dependencies: asked for vs got",
       "status": "pending"
+    },
+    {
+      "when": "2026-11-09T09:00",
+      "text_file": "posts/sql-null-pipeline.txt",
+      "image": "images/sql-null-pipeline.png",
+      "image_source": "0. LinkedIn/Images/sql null not in zero rows.png",
+      "label": "Four ways a NULL in SQL can mess with your pipeline",
+      "status": "pending"
     }
   ]
 }
