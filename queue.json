@@ -285,7 +285,9 @@
       "image": "images/reading-a-spark-plan.png",
       "image_source": "0. LinkedIn/Images/reading a spark plan - one query two directions.png",
       "label": "How to read a Databricks/Spark plan",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-10-19T09:00:53+01:00",
+      "post_id": "urn:li:share:7517857296413016065"
     },
     {
       "when": "2026-10-21T09:00",
