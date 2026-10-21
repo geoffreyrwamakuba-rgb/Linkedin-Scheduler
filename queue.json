@@ -295,7 +295,9 @@
       "image": "images/polling-vs-webhooks-failures.png",
       "image_source": "0. LinkedIn/Images/polling vs webhooks - both break.png",
       "label": "Polling vs webhooks, the failure modes",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-10-21T09:00:51+01:00",
+      "post_id": "urn:li:share:7518582060526194689"
     },
     {
       "when": "2026-10-23T09:00",
