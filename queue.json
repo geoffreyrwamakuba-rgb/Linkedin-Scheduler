@@ -305,7 +305,9 @@
       "image": "images/sqs-sns-eventbridge.png",
       "image_source": "0. LinkedIn/Images/SQS SNS EventBridge three analogies.png",
       "label": "SQS vs SNS vs EventBridge in plain English",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-10-23T09:00:55+01:00",
+      "post_id": "urn:li:share:7519306856712826881"
     },
     {
       "when": "2026-10-26T09:00",
