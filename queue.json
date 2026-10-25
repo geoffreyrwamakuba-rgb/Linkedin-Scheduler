@@ -364,6 +364,14 @@
       "image_source": "0. LinkedIn/Images/sql null not in zero rows.png",
       "label": "Four ways a NULL in SQL can mess with your pipeline",
       "status": "pending"
+    },
+    {
+      "when": "2026-11-16T09:00",
+      "text_file": "posts/index-not-used.txt",
+      "image": "images/index-not-used.png",
+      "image_source": "0. LinkedIn/Images/why the index isnt used.png",
+      "label": "Why the index you added isn't being used",
+      "status": "pending"
     }
   ]
 }

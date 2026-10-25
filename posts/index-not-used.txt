@@ -1,0 +1,13 @@
+You added an index, and the query plan still shows a full table scan. There are four usual reasons.
+
+An index only helps when the WHERE clause asks about the column in a form its sort order can answer. A predicate that can is called SARGable (search-argument-able).
+
+→ A function around the column. WHERE YEAR(order_date) = 2026 can't use an index on order_date, because the index holds dates, not years. Write the range instead: order_date >= '2026-01-01' AND order_date < '2027-01-01'.
+
+→ An implicit type conversion. account_code is a VARCHAR and the query says WHERE account_code = 12345. SQL Server, MySQL and Oracle all convert the column to a number, not the 12345. That is a function on the column that nobody wrote. PostgreSQL refuses the comparison instead. Put the value in quotes.
+
+→ A wildcard at the front. LIKE 'son%' can use the index and LIKE '%son' can't. The index is sorted from the first character, so a pattern with no fixed start gives it nowhere to begin.
+
+→ The optimiser chose a scan on purpose. When a filter matches a big share of the table, reading it straight through beats jumping between the index and the table row by row. If it scans on a filter you know is selective, refresh statistics first (ANALYZE in PostgreSQL).
+
+Only the last one is the database's decision. The other three are written into the query.
