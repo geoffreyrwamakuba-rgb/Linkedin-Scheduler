@@ -10,4 +10,4 @@ An API status code's first digit tells you whose problem it is before you read a
 
 The one worth remembering is 429. It sits in the 4xx family, but the request itself is fine and there were simply too many of them. Wait, then send it again. Many APIs say how long to wait in a Retry-After header.
 
-The image has the codes worth knowing by heart. Save it for the next time a pipeline fails with a number and no explanation.
+The image has the codes worth knowing by heart.
