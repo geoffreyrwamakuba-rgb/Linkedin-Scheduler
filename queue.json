@@ -315,7 +315,9 @@
       "image": "images/capacity-vs-consumption.png",
       "image_source": "0. LinkedIn/Images/capacity ceiling - pay more or wait.png",
       "label": "Capacity pricing vs consumption pricing",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-10-26T09:02:20+00:00",
+      "post_id": "urn:li:share:7520409472989589504"
     },
     {
       "when": "2026-10-28T09:00",
