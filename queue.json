@@ -380,6 +380,14 @@
       "status": "pending"
     },
     {
+      "when": "2026-11-13T09:00",
+      "text_file": "posts/pandas-chunk-concat.txt",
+      "image": "images/pandas-chunk-concat.png",
+      "image_source": "0. LinkedIn/Images/chunk then concat - peak memory.png",
+      "label": "Chunking then concat saves almost no memory",
+      "status": "pending"
+    },
+    {
       "when": "2026-11-16T09:00",
       "text_file": "posts/index-not-used.txt",
       "image": "images/index-not-used.png",

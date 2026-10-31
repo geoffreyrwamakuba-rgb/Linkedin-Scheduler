@@ -1,0 +1,21 @@
+Reading a CSV with pandas chunksize, then concatenating the chunks, saves almost no memory.
+
+I measured it on a 110 MB CSV with 2 million rows. The job: keep the paid orders and write them to a new file. Peak memory for each approach:
+
+→ One plain read_csv of the whole file: 327 MB.
+→ chunksize=200_000, then pd.concat on the chunks: 305 MB.
+→ chunksize=200_000, filtering each chunk and writing it out straight away: 79 MB.
+
+The concat version reads every chunk, keeps them all in a list, then glues them back into one DataFrame. By the end the whole file is in memory again, so the peak barely moves.
+
+Chunking only saves memory when you finish with each chunk before the next one arrives. Filter it, aggregate it or write it, then let it go:
+
+first = True
+for chunk in pd.read_csv("orders.csv", chunksize=200_000):
+    paid = chunk[chunk["status"] == "paid"]
+    paid.to_csv("paid.csv", mode="w" if first else "a", header=first, index=False)
+    first = False
+
+mode="a" appends to the file, and header=first writes the column names only once.
+
+All three wrote the same 666,632 rows. The last one used about a quarter of the memory.
