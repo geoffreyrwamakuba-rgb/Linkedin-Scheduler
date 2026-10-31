@@ -372,6 +372,14 @@
       "status": "pending"
     },
     {
+      "when": "2026-11-11T09:00",
+      "text_file": "posts/pandas-memory-read-csv.txt",
+      "image": "images/pandas-memory-read-csv.png",
+      "image_source": "0. LinkedIn/Images/pandas memory - three read_csv changes.png",
+      "label": "pandas memory: CSV size on disk vs RAM",
+      "status": "pending"
+    },
+    {
       "when": "2026-11-16T09:00",
       "text_file": "posts/index-not-used.txt",
       "image": "images/index-not-used.png",
