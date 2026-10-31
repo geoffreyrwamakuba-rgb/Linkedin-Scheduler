@@ -1,0 +1,33 @@
+Swapping lists for Python generators can cut peak memory.
+
+On a 110 MB CSV with 2 million rows, the list version peaked at 970 MB. The generator version used under 1 MB. Same job both times: keep the paid orders and write them to a new file.
+
+The list version builds each step in full before the next one starts:
+
+with open("orders.csv", newline="") as f:
+    rows = list(csv.DictReader(f))
+paid = [r for r in rows if r["status"] == "paid"]
+
+Every row sits in memory as a Python dict, then a second list goes on top.
+
+The generator version uses yield instead of building lists:
+
+def read(path):
+    with open(path, newline="") as f:
+        yield from csv.DictReader(f)
+
+def only_paid(rows):
+    for r in rows:
+        if r["status"] == "paid":
+            yield r
+
+write(only_paid(read("orders.csv")), "paid.csv")
+
+A generator hands back one item, pauses, and only runs again when the next step asks for another. Here each item is a row. It could just as well be a batch of 10,000 rows, which is what pandas chunksize gives you. Chained together, each row travels from the file to the output before the next one is read. That is streaming. write() is an ordinary loop that writes each row as it arrives.
+
+Peak memory, measured:
+→ Lists: 970 MB.
+→ Generators: under 1 MB.
+→ Generators with one sorted() in the middle: 348 MB.
+
+That last one is the catch. sorted() can't hand back its first row until it has seen every row, so it pulls the whole stream back into memory. list() does the same. A pipeline only streams as well as its hungriest step.
