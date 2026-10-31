@@ -1,0 +1,25 @@
+Reading a CSV in pandas chunks? Averaging each chunk's mean gives you the wrong overall mean.
+
+With chunksize=, pandas hands you the file in pieces. The tempting move is to take the mean of each piece, then average those.
+
+That only works when every chunk is the same size, and the last chunk usually isn't.
+
+Small example: chunk A has 3 rows with a mean of 10. Chunk B has 1 row with a mean of 50. Average the two means and you get 30. The real mean is (3 × 10 + 50) / 4 = 20.
+
+On real data, 100,000 rows with chunksize=30_000 gives four chunks: 30k, 30k, 30k and 10k rows. Averaging the four means gives each chunk a quarter of the vote, so the 10k chunk counts for 25% when it holds only 10% of the rows.
+
+→ Shuffled file: every chunk is a random mix, so all four means sit near 50. Giving the small one extra weight barely moves the answer. Mean of means 49.93, true mean 49.90. Close enough to pass a test.
+
+→ Same rows sorted by amount: the last chunk now holds the 10,000 largest amounts, with a mean of 94.91. Its extra weight pulls the answer up to 57.40, against a true 49.90. 15% too high.
+
+So the error only shows up when chunks differ from each other, and a file sorted by date, customer or region often has chunks that do.
+
+The fix is to carry a running sum and a running count across chunks, then divide once at the end:
+
+total, rows = 0, 0
+for chunk in pd.read_csv("orders.csv", chunksize=30_000):
+    total += chunk["amount"].sum()
+    rows += len(chunk)
+mean = total / rows
+
+Median has no fix like this. The median of the chunk medians isn't the median of the file, so for that you need a tool that can see the whole column at once.

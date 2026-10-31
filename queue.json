@@ -386,6 +386,14 @@
       "image_source": "0. LinkedIn/Images/why the index isnt used.png",
       "label": "Why the index you added isn't being used",
       "status": "pending"
+    },
+    {
+      "when": "2026-11-18T09:00",
+      "text_file": "posts/pandas-chunk-means.txt",
+      "image": "images/pandas-chunk-means.png",
+      "image_source": "0. LinkedIn/Images/chunk means - worked example.png",
+      "label": "Chunk means are the wrong mean",
+      "status": "pending"
     }
   ]
 }
