@@ -404,6 +404,14 @@
       "status": "pending"
     },
     {
+      "when": "2026-11-20T09:00",
+      "text_file": "posts/file-formats-know-their-types.txt",
+      "image": "images/file-formats-know-their-types.png",
+      "image_source": "0. LinkedIn/Images/file formats - does the file know its own types.png",
+      "label": "File formats 1: does the file know its own types?",
+      "status": "pending"
+    },
+    {
       "when": "2026-11-23T09:00",
       "text_file": "posts/python-generators-streaming.txt",
       "image": "images/python-generators-streaming.png",

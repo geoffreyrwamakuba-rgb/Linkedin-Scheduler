@@ -1,0 +1,13 @@
+CSV, JSON, Avro and Parquet differ on one question that breaks pipelines: does the file know its own types?
+
+If it doesn't, whatever reads it has to guess, and different readers guess differently.
+
+→ CSV carries no types at all. Every value is text, and even the header row is optional. A reader sees 00123, decides it is a number, and pandas hands you back 123. Dates come back as plain strings.
+
+→ JSON knows strings, numbers, true/false and null, and nothing else. There is no date type, so a date travels as text or as a number like 1790812800000 (milliseconds since 1970), depending on what wrote the file. Readers still guess on top of that: pandas' read_json turns the string "00123" into 123.
+
+→ Avro stores the writer's schema in the file header, with real date, decimal and timestamp types. A reader can also add a field with a default value, so older files still load after the schema changes. That is a big reason it is common alongside Kafka.
+
+→ Parquet stores its schema inside the file too, with proper date and timestamp types, so a column written as a date is read back as a date by Spark, pandas or DuckDB alike.
+
+The practical rule: with Avro or Parquet, the file tells the reader what it holds. With CSV or JSON, you tell the reader yourself, for example dtype={"account_code": str} to keep the zeros.
