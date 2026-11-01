@@ -426,6 +426,14 @@
       "image_source": "0. LinkedIn/Images/compression - where it is applied.png",
       "label": "File formats: compression, where it is applied",
       "status": "pending"
+    },
+    {
+      "when": "2026-11-27T09:00",
+      "text_file": "posts/file-formats-boring-default.txt",
+      "image": "images/file-formats-boring-default.png",
+      "image_source": "0. LinkedIn/Images/athena query cost by file format.png",
+      "label": "File formats: the boring default depends on the tool",
+      "status": "pending"
     }
   ]
 }

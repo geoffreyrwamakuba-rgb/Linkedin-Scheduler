@@ -1,0 +1,12 @@
+Parquet plus Snappy gets called the boring default. Whether you actually get it depends on which tool wrote the file.
+
+Write Parquet with no settings and the codec you end up with varies by tool:
+→ Snappy: Spark, pandas, DuckDB
+→ zstd: Polars, and Apache Iceberg tables
+→ gzip: Athena, when it writes Parquet into a Hive table
+
+So a lake fed by a few teams and tools often holds all three, and nobody chose any of them. For correctness that is mostly harmless. Engines read tables whose files mix codecs, and no query has to change.
+
+Where it shows up is the bill. Scan-priced engines charge on the bytes they read, and Athena charges $5 per TB scanned. AWS's own pricing example takes one query from $15 on uncompressed text to $5 once the files are compressed, and to $1.25 once they are Parquet too, because only the needed column gets read.
+
+So pick the codec on purpose, once, as a table-level setting rather than whatever each job defaults to. If you're making new tables, zstd is the stronger default now: files close to gzip's size, written at close to Snappy's speed. What costs money is not choosing at all.
