@@ -1,0 +1,16 @@
+Gzipping a big CSV can make Spark slower to read it. With compression, where it is applied matters more than which codec you pick.
+
+A gzipped CSV is one continuous compressed stream. A reader can't start in the middle, so Spark gives the whole file to a single task, however large it is. Codecs like gzip and Snappy aren't splittable on their own.
+
+Parquet and Avro compress in blocks instead. Each block is compressed separately and the file marks where each one starts, so a large file still splits across many workers whichever codec you choose.
+
+Parquet also shrinks data in two steps:
+→ Encoding first. Dictionary encoding stores each distinct value once and replaces repeats with small numbers. Run-length encoding stores "North × 4,000" instead of 4,000 copies. It helps most on repetitive columns like region or status.
+→ Then the codec compresses the encoded bytes.
+
+Choosing the codec:
+→ Snappy: fast to write and read, moderate compression. The default in Spark and pandas.
+→ gzip: smaller files, but much slower to write.
+→ zstd: typically gzip-level size or better at close to Snappy's speed. Athena uses it by default for Iceberg tables.
+
+Pick the format first. The codec is a setting you can change later without rewriting a single query.
