@@ -434,6 +434,14 @@
       "image_source": "0. LinkedIn/Images/athena query cost by file format.png",
       "label": "File formats: the boring default depends on the tool",
       "status": "pending"
+    },
+    {
+      "when": "2026-11-30T09:00",
+      "text_file": "posts/file-formats-decision-tree.txt",
+      "image": "images/file-formats-decision-tree.png",
+      "image_source": "0. LinkedIn/Images/file format decision - two formats per pipeline.png",
+      "label": "File formats: two formats per pipeline (decision tree)",
+      "status": "pending"
     }
   ]
 }

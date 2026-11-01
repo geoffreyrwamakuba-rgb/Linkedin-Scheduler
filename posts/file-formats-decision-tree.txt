@@ -1,0 +1,15 @@
+Most data pipelines need two file formats, not one: one for how data arrives, and one for how it is stored and queried.
+
+Pick each by asking where the data goes next:
+
+→ To a person or a partner who asked for a file? CSV. Agree the column types with them, because the file won't carry them.
+
+→ To another system as events happen? Avro, usually with a schema registry, so producers can add fields without breaking consumers. For an API payload, JSON.
+
+→ Into your lake exactly as received, so you can replay it later? JSON Lines in the raw layer. Keep it, but don't point dashboards at it.
+
+→ To analysts, dashboards or models? Parquet, inside Iceberg or Delta if rows ever get updated or deleted.
+
+The step between the two is where the real work happens, usually the move from raw to cleaned. Types get fixed and checked once there, instead of guessed by every reader downstream.
+
+The warning sign is CSV in the middle of a pipeline rather than at its edges. That is usually where the next type bug comes from.
