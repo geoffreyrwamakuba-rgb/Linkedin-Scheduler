@@ -365,7 +365,9 @@
       "image": "images/python-dependencies-asked-vs-got.png",
       "image_source": "0. LinkedIn/Images/python dependencies - asked for vs got.png",
       "label": "Python dependencies: asked for vs got",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-11-06T09:00:58+00:00",
+      "post_id": "urn:li:share:7524395399948709888"
     },
     {
       "when": "2026-11-09T09:00",
