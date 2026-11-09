@@ -375,7 +375,9 @@
       "image": "images/sql-null-pipeline.png",
       "image_source": "0. LinkedIn/Images/sql null not in zero rows.png",
       "label": "Four ways a NULL in SQL can mess with your pipeline",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-11-09T09:00:57+00:00",
+      "post_id": "urn:li:share:7525482558017683456"
     },
     {
       "when": "2026-11-11T09:00",
