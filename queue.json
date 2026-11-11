@@ -385,7 +385,9 @@
       "image": "images/pandas-memory-read-csv.png",
       "image_source": "0. LinkedIn/Images/pandas memory - three read_csv changes.png",
       "label": "pandas memory: CSV size on disk vs RAM",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-11-11T09:00:59+00:00",
+      "post_id": "urn:li:share:7526207339545145344"
     },
     {
       "when": "2026-11-13T09:00",
