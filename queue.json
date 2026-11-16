@@ -405,7 +405,9 @@
       "image": "images/index-not-used.png",
       "image_source": "0. LinkedIn/Images/why the index isnt used.png",
       "label": "Why the index you added isn't being used",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-11-16T09:00:56+00:00",
+      "post_id": "urn:li:share:7528019270966906881"
     },
     {
       "when": "2026-11-18T09:00",
