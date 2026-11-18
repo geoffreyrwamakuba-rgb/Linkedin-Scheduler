@@ -415,7 +415,9 @@
       "image": "images/pandas-chunk-means.png",
       "image_source": "0. LinkedIn/Images/chunk means - worked example.png",
       "label": "Chunk means are the wrong mean",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-11-18T09:01:00+00:00",
+      "post_id": "urn:li:share:7528744059532918787"
     },
     {
       "when": "2026-11-20T09:00",
