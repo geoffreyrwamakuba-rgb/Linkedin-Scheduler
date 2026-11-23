@@ -435,7 +435,9 @@
       "image": "images/python-generators-streaming.png",
       "image_source": "0. LinkedIn/Images/python generators - one item at a time.png",
       "label": "Python generators are how you stream",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-11-23T09:00:57+00:00",
+      "post_id": "urn:li:share:7530555987062112256"
     },
     {
       "when": "2026-11-25T09:00",
