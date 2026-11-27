@@ -455,7 +455,9 @@
       "image": "images/file-formats-boring-default.png",
       "image_source": "0. LinkedIn/Images/athena query cost by file format.png",
       "label": "File formats: the boring default depends on the tool",
-      "status": "pending"
+      "status": "posted",
+      "posted_at": "2026-11-27T09:00:59+00:00",
+      "post_id": "urn:li:share:7532005548444020736"
     },
     {
       "when": "2026-11-30T09:00",
