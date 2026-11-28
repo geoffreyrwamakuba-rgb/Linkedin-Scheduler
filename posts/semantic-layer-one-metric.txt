@@ -1,0 +1,19 @@
+Four dashboards, four numbers for "active customers". That's the problem a semantic layer exists to fix.
+
+Each one is a reasonable definition:
+→ Logged in during the last 30 days (product)
+→ Placed an order in the last 90 days (sales)
+→ Has a paid subscription today (finance)
+→ Not marked as churned in the CRM (customer success)
+
+Nobody's SQL is wrong. Each team wrote the metric into its own dashboard, and the definitions drifted apart. Then the meeting goes on whose number is right instead of what to do about it.
+
+A semantic layer moves the definition out of the dashboards. You define "active customer" once, as code, and every tool asks that definition for the number. The dbt Semantic Layer (powered by MetricFlow), Looker's LookML and Cube all work this way.
+
+Starting is smaller than it sounds:
+→ Pick the one metric people argue about most
+→ Agree a single definition with whoever owns it
+→ Write it down in one place
+→ Repoint the dashboards one at a time
+
+The other three definitions don't disappear. They become separate, named metrics, which is usually what each team meant all along.

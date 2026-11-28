@@ -498,6 +498,14 @@
       "image_source": "0. LinkedIn/Images/small files - same 10 GB two ways.png",
       "label": "The small files problem",
       "status": "pending"
+    },
+    {
+      "when": "2026-12-11T09:00",
+      "text_file": "posts/semantic-layer-one-metric.txt",
+      "image": "images/semantic-layer-one-metric.png",
+      "image_source": "0. LinkedIn/Images/semantic layer - four definitions.png",
+      "label": "Semantic layers: one metric, four definitions",
+      "status": "pending"
     }
   ]
 }
