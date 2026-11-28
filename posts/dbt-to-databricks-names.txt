@@ -1,0 +1,15 @@
+If you know dbt, you already know most of Databricks' Lakeflow pipelines. Same ideas, different names.
+
+→ A dbt model is a dataset in the pipeline: a materialized view or a streaming table, defined in SQL.
+
+→ ref() becomes using the other dataset's name. The pipeline works out the dependency graph from those references, the same way dbt builds its DAG.
+
+→ An incremental model is closest to a streaming table, which only processes input it hasn't seen yet.
+
+→ A snapshot is AUTO CDC with SCD type 2, which keeps a row for every version of a record.
+
+→ A test is an expectation: CONSTRAINT valid_id EXPECT (id IS NOT NULL) ON VIOLATION DROP ROW
+
+That last pair is where they really differ. A dbt test runs after the model is built and reports what it found. An expectation runs as rows are written, and you choose per rule whether a bad row is kept with a warning, dropped, or fails the whole update.
+
+So the modelling carries straight over. The new decision is which rules should stop the pipeline and which should only count.

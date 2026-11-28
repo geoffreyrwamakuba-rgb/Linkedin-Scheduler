@@ -522,6 +522,14 @@
       "image_source": "0. LinkedIn/Images/key-value store vs warehouse - who is asking.png",
       "label": "A key-value store is not a warehouse",
       "status": "pending"
+    },
+    {
+      "when": "2026-12-18T09:00",
+      "text_file": "posts/dbt-to-databricks-names.txt",
+      "image": "images/dbt-to-databricks-names.png",
+      "image_source": "0. LinkedIn/Images/dbt to Databricks - same ideas new names.png",
+      "label": "dbt concepts renamed in Databricks",
+      "status": "pending"
     }
   ]
 }
