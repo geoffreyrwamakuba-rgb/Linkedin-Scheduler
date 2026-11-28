@@ -1,0 +1,15 @@
+Delta Lake keeps every version of a table, so a bad overwrite can be undone with one SQL command.
+
+Each write adds a new version to the table's transaction log, and the old data files stay where they are until something cleans them up.
+
+→ See what happened: DESCRIBE HISTORY orders lists every version, when it was written and which operation wrote it.
+
+→ Look before you fix: SELECT * FROM orders VERSION AS OF 41 shows the table as it was. TIMESTAMP AS OF works too.
+
+→ Undo it: RESTORE TABLE orders TO VERSION AS OF 41. The restore is recorded as a new version, so it can be undone as well.
+
+The catch is the retention window. VACUUM deletes data files a table no longer references once they're older than delta.deletedFileRetentionDuration, 7 days by default. After that the old versions can't be read, and from Databricks Runtime 18.0 the query is blocked outright.
+
+The log itself keeps 30 days by default, so DESCRIBE HISTORY can list a version you can no longer query.
+
+If a table needs a longer undo window, raise deletedFileRetentionDuration on that table and accept the extra storage. It still isn't a backup: if the table's storage goes, its history goes with it.

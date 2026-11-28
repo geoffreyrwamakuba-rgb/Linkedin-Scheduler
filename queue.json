@@ -506,6 +506,14 @@
       "image_source": "0. LinkedIn/Images/semantic layer - four definitions.png",
       "label": "Semantic layers: one metric, four definitions",
       "status": "pending"
+    },
+    {
+      "when": "2026-12-14T09:00",
+      "text_file": "posts/delta-time-travel.txt",
+      "image": "images/delta-time-travel.png",
+      "image_source": "0. LinkedIn/Images/delta time travel - restore a version.png",
+      "label": "Delta Lake time travel: undo a bad write",
+      "status": "pending"
     }
   ]
 }
