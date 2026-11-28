@@ -466,6 +466,14 @@
       "image_source": "0. LinkedIn/Images/file format decision - two formats per pipeline.png",
       "label": "File formats: two formats per pipeline (decision tree)",
       "status": "pending"
+    },
+    {
+      "when": "2026-12-02T09:00",
+      "text_file": "posts/dbt-incremental-quiet-failures.txt",
+      "image": "images/dbt-incremental-quiet-failures.png",
+      "image_source": "0. LinkedIn/Images/dbt incremental - four quiet failures.png",
+      "label": "dbt incremental models: four quiet failures",
+      "status": "pending"
     }
   ]
 }

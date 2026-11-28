@@ -1,0 +1,13 @@
+A dbt incremental model can run green every day and still be wrong. Four ways it happens without a single error:
+
+→ Late rows get skipped. The usual filter only takes rows newer than the latest one already in the table. A row that lands today with yesterday's timestamp sits behind that line and never gets picked up. Filtering from a few days back, with a unique_key to absorb the overlap, catches it.
+
+→ No unique_key means append. On most adapters dbt inserts every row the query returns, duplicates included, so rerunning a day doubles it.
+
+→ New columns never arrive. on_schema_change defaults to ignore, so a column you add to the model doesn't appear in the target table. Set it to append_new_columns, or to fail if you'd rather be told.
+
+→ A logic fix only applies going forward. Correct a calculation and every existing row keeps the old answer until you run --full-refresh.
+
+All four come from the same place: an incremental model only reads the newest slice, so it can't notice anything it never re-reads.
+
+For any table that matters, schedule a full refresh anyway, even monthly, and compare the row counts before and after.
