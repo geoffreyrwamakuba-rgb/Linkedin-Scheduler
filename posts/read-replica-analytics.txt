@@ -1,0 +1,15 @@
+Pointing dashboards at the Postgres read replica works fine, right up until the analytics queries start fighting replication.
+
+It's the usual first step. Production is off limits, a replica already exists, and the BI tool can connect to it today.
+
+The catch is that the replica's real job is to keep replaying changes from the primary, and a long analytics query gets in the way of that.
+
+→ Postgres has to pick one. Either replay waits for your query to finish, and the replica falls behind, or your query is cancelled once the wait passes max_standby_streaming_delay.
+
+→ Turn on hot_standby_feedback to stop the cancellations, and the cost moves to production. The primary has to keep dead rows around for your query, and the Postgres docs warn that this can bloat tables.
+
+→ If anything in the product also reads from that replica, its lag is now your users' lag.
+
+The warning signs tend to arrive in that order: dashboards that fail at random, then replica lag that climbs whenever reports run, then production tables that keep growing.
+
+Once you see the second one, move the analytics out. A nightly extract or CDC into a warehouse puts the long scans somewhere built for them.

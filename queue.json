@@ -482,6 +482,14 @@
       "image_source": "0. LinkedIn/Images/fact grain - one row is one what.png",
       "label": "Fact grain: one row is one what?",
       "status": "pending"
+    },
+    {
+      "when": "2026-12-07T09:00",
+      "text_file": "posts/read-replica-analytics.txt",
+      "image": "images/read-replica-analytics.png",
+      "image_source": "0. LinkedIn/Images/read replica - three warning signs.png",
+      "label": "Analytics on a Postgres read replica",
+      "status": "pending"
     }
   ]
 }
