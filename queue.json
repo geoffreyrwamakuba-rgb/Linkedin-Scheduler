@@ -490,6 +490,14 @@
       "image_source": "0. LinkedIn/Images/read replica - three warning signs.png",
       "label": "Analytics on a Postgres read replica",
       "status": "pending"
+    },
+    {
+      "when": "2026-12-09T09:00",
+      "text_file": "posts/small-files-problem.txt",
+      "image": "images/small-files-problem.png",
+      "image_source": "0. LinkedIn/Images/small files - same 10 GB two ways.png",
+      "label": "The small files problem",
+      "status": "pending"
     }
   ]
 }
