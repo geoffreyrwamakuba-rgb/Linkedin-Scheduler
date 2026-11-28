@@ -1,0 +1,13 @@
+DynamoDB, MongoDB and Redshift all store data, but they answer opposite kinds of question. Pick by who is asking.
+
+→ An application asks millions of small questions it already knows the key for: get customer 4417, update basket 9031. Each answer has to come back in milliseconds. That's a key-value or document store, like DynamoDB or MongoDB.
+
+→ A person asks a few enormous questions across everything: revenue by region last quarter. That means reading one or two columns from every row. That's a columnar warehouse, like Redshift or Snowflake.
+
+Row versus column storage is the consequence of that choice. A store built for one kind of question is slow or expensive at the other:
+
+→ In DynamoDB, "revenue by region" is a Scan. It reads every item in the table, and you pay read capacity for all of it, even with a filter.
+
+→ A warehouse behind a product page is the same mistake in reverse: built for big scans, asked for thousands of tiny lookups a second.
+
+That's also why data engineers learn DynamoDB without ever building an app on it. The pipeline's job is moving data from the store the app writes to into the store people query, for example with DynamoDB's export to S3.

@@ -514,6 +514,14 @@
       "image_source": "0. LinkedIn/Images/delta time travel - restore a version.png",
       "label": "Delta Lake time travel: undo a bad write",
       "status": "pending"
+    },
+    {
+      "when": "2026-12-16T09:00",
+      "text_file": "posts/key-value-not-warehouse.txt",
+      "image": "images/key-value-not-warehouse.png",
+      "image_source": "0. LinkedIn/Images/key-value store vs warehouse - who is asking.png",
+      "label": "A key-value store is not a warehouse",
+      "status": "pending"
     }
   ]
 }
