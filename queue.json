@@ -474,6 +474,14 @@
       "image_source": "0. LinkedIn/Images/dbt incremental - four quiet failures.png",
       "label": "dbt incremental models: four quiet failures",
       "status": "pending"
+    },
+    {
+      "when": "2026-12-04T09:00",
+      "text_file": "posts/fact-grain-one-row.txt",
+      "image": "images/fact-grain-one-row.png",
+      "image_source": "0. LinkedIn/Images/fact grain - one row is one what.png",
+      "label": "Fact grain: one row is one what?",
+      "status": "pending"
     }
   ]
 }

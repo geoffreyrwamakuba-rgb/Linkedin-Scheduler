@@ -1,0 +1,19 @@
+Before you add a single column to a fact table, finish this sentence: one row in this table is one what?
+
+That sentence is the grain. Kimball's design process puts declaring it second, after choosing the business process and before any dimensions or measures.
+
+Take one order with three products and £5 shipping.
+
+→ At order grain there is one row. Shipping is £5, which is right. Product doesn't fit, because there are three of them.
+
+→ At order line grain there are three rows. Product fits. But if shipping is copied onto every line, summing it gives £15.
+
+Both grains are valid. The trouble starts when a measure that belongs to one is stored at the other.
+
+Two honest fixes for the shipping case:
+
+→ Keep it at the grain it belongs to, in an order-level fact table.
+
+→ Or split it across the lines on purpose: £1.67, £1.67 and £1.66, so it still adds up to £5. Then write down that it's an allocation.
+
+So, for the fact table you're working on right now: what is one row?
